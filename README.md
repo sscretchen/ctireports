@@ -62,7 +62,7 @@ Header and footer information gets imported so I will focus on medium to high co
 </p>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/54426511/210667307-53309953-71fc-4b15-ab83-a989f8ba642f.PNG" style="width:100%">
-  <div align="center">Looking on MITRE ATT&CK site for the low confidence TTP</div>
+  <div align="center">Looking on the MITRE ATT&CK site for the low confidence TTP</div>
 </p>
 
 <p align="left">
