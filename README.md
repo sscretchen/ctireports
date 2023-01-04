@@ -20,7 +20,7 @@ research into automating the mapping of cyber threat intelligence reports to MIT
 
 - ```Report 1``` <a href="https://www.malwarebytes.com/blog/threat-intelligence/2022/08/woody-rat-a-new-feature-rich-malware-spotted-in-the-wild">ARTICLE</A>
 Focuses on a newer RAT called Woody.
-  * Final Notes (see TRAM report in *REPORTS* folder: Given the responsibility, I can continue building on this report. By joining additional CTI sources, and analyzing the reports for additional TTs. I can present a thorough report on how an existing, or potential incident can affect business operations.
+  * Final Notes (see TRAM report in *REPORTS* folder) - Given the responsibility, I can analyze more of this report, or similar reports for additional TTPs. Whether its Malware, APTs or some other attack vector, I can apply this workflow proactively to avoid a similar incident on business operations. 
   
 ---
 
