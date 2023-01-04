@@ -28,18 +28,15 @@ Focuses on a newer RAT called Woody.
 
 ```Report 1```
 
-<p align="left">
-Step 1 - Import an HTML format of article
-</p>
+
+#### Step 1 - Import an HTML format of article
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/54426511/210481736-5838cfa3-cf2d-4bfd-9879-a93c5dc9a1e0.PNG" alt="import" style="width:100%">
 TRAM queues the report and identifies relevant information to check for TTPs using MITRE ATT&CK. I will be stepping through each item here, mapping any findings
 </p>
 
-<p align="left">
-Step 2 - Look for relevant TTPs
-</p>
+#### Step 2 - Look for relevant TTPs
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/54426511/210666065-2b264c87-8ea4-41a3-bebb-ed98d0cc74ff.PNG" style="width:100%">
@@ -65,9 +62,7 @@ Header and footer information gets imported so I will focus on medium to high co
   <div align="center">Looking on the MITRE ATT&CK site for the low confidence TTP</div>
 </p>
 
-<p align="left">
-Step 3 - Export findings
-</p>
+#### Step 3 - Export findings
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/54426511/210667586-f358db6a-4bf9-4a2c-8d5d-aa40bdb0f6c9.PNG" style="width:auto" height="256">
