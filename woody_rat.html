@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<meta charset="UTF-8">
+  	
+<title>Woody RAT: A new feature-rich malware spotted in the wild</title>
+<meta name="description" content=""/>
+<link rel="canonical" href="https://www.malwarebytes.com/blog/threat-intelligence/2022/08/woody-rat-a-new-feature-rich-malware-spotted-in-the-wild"/></link>
+<meta name="robots" content="index, follow"/>
+<meta name="googlebot" content="index, follow"/>
+<meta property="page_published" content="Wednesday, December 7, 2022 5:39:31 PM"/>
+
+<meta name="asset_id" content="233242"/>
+<meta name="asset_label" content="Woody RAT A new feature-rich malware spotted in the wild"/>
+<link rel="amphtml" href="https://www.malwarebytes.com/blog/threat-intelligence/2022/08/woody-rat-a-new-feature-rich-malware-spotted-in-the-wild/amp"/><meta property="og:type" content="article"/>
+<meta property="fb:app_id" content="358351844222748"/>
+<meta property="og:title" content="Woody RAT: A new feature-rich malware spotted in the wild"/>
+<meta property="og:url" content="https://www.malwarebytes.com/blog/threat-intelligence/2022/08/woody-rat-a-new-feature-rich-malware-spotted-in-the-wild"/>
+<meta property="og:site_name" content="Malwarebytes"/>
+<meta property="og:image" content="https://www.malwarebytes.com/blog/threat-intelligence/2022/08/asset_upload_file94969_233242.jpg"/>
+<meta property="og:image:width" content="736"/>
+<meta property="og:image:height" content="414"/>
+<meta property="og:image:type" content="image/jpg"/>
+<meta property="og:description" content="The Malwarebytes Threat Intelligence team has discovered a new Remote Access Trojan that we dubbed Woody Rat used to target Russian entities."/>
+<meta property="twitter:title" content="Woody RAT: A new feature-rich malware spotted in the wild"/>
+<meta property="twitter:card" content="summary"/>
+<meta property="twitter:creator" content="@malwarebytes"/>
+<meta property="twitter:site" content="@malwarebytes"/>
+<meta property="twitter:image" content="https://www.malwarebytes.com/blog/threat-intelligence/2022/08/asset_upload_file94969_233242.jpg"/>
+<meta property="twitter:description" content="The Malwarebytes Threat Intelligence team has discovered a new Remote Access Trojan that we dubbed Woody Rat used to target Russian entities."/>
+<script type="application/ld+json">{  "@context": "https://schema.org",  "@type": "BreadcrumbList",  "itemListElement": [    {
+"@type": "ListItem",
+"position": 1,
+"name": "us-en","item": {
+"@id": "https://www.malwarebytes.com/"
+}
+},
+{
+"@type": "ListItem",
+"position": 2,
+"name": "Blog","item": {
+"@id": "https://www.malwarebytes.com/blog"
+}
+},
+{
+"@type": "ListItem",
+"position": 3,
+"name": "Threat Intelligence","item": {
+"@id": "https://www.malwarebytes.com/blog/category/threat-intelligence"
+}
+},
+{
+"@type": "ListItem",
+"position": 4,
+"name": "Woody RAT A new feature-rich malware spotted in the wild","item": {
+"@id": "https://www.malwarebytes.com/blog/threat-intelligence/2022/08/woody-rat-a-new-feature-rich-malware-spotted-in-the-wild"
+}
+}
+      ]}</script>
+
+
+	    <script src="/js/library/jquery.min.js"></script>
+    <!-- GTM -->
+    <script type="text/javascript">(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MKSKW3');</script>
+    <!-- End GTM -->
+  
+
+   
+    <meta name="apple-itunes-app" content="app-id=1327105431, affiliate-data=, app-argument=">
+    <meta name="facebook-domain-verification" content="cmdpjevu8l4zya3vzr1p6f00v21uty" />
+    <!--[if lte IE 9]>
+    <script type="text/javascript" src="/js/html5shiv-min.js"></script>
+    <script type="text/javascript" src="/js/flexibility.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    
+        <link rel='shortcut icon' href='/images/favicon.ico' type='image/x-icon' />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/images/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/favicon-128.png" sizes="128x128" />
+    <meta name="p:domain_verify" content="58b6af73fe958367da83d2c28dda26c0" />
+    <meta name="application-name" content="Malwarebytes" />
+    <meta name="msapplication-TileColor" content="#" />
+    <meta name="msapplication-TileImage" content="/images/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/images/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/images/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/images/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/images/mstile-310x310.png" /><script>
+var global_variables = { 
+when: '12/21/2022 4:40:54 PM',
+site : { 
+language: 'en',
+country: 'us',
+phoneNumbers: {
+'US': {'view':'+1-800-520-2796','call':'18005202796'},
+'GB': {'view':'+44 (800) 368-8486','call':'448003688486'},
+'FR': {'view':'+33 (800) 909-009','call':'33800909009'},
+'ES': {'view':'+34 (900) 823-509','call':'34900823509'},
+'DE': {'view':'+49 (800) 723-4800','call':'498007234800'},
+'IT': {'view':'+39 (800) 972-511','call':'39800972511'},
+'SG': {'view':'+65 6813-2150','call':'6568132150'},
+'AU': {'view':'1800-745-824','call':'1800745824'},
+'NZ': {'view':'0800-446-541','call':'0800446541'}
+},
+endpoints: {
+carts: {
+lira: 'https://ecom.malwarebytes.com',
+onepay: 'https://buy.malwarebytes.com',
+},
+},
+apiHostname: 'https://www-api.malwarebytes.com',
+liraCartLinkEndpoint: 'https://ecom.malwarebytes.com'
+}
+}
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="/css/bootstrap_mwb.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap_overrides.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/fonts.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/styles.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/styles_overrides.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/styles_components.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/master_page.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/component-project/templates/navwrap/masterpage-svg.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/user-experience/animation/animate-on-scroll.min.css" />
+
+<!--adding custom CSS-->
+
+
+  <script src="/__bundle.js?f=L2pzL3N0cmluZy9zdHJpbmcubWluLmpzLC9qcy9zZXNzaW9uL3Nlc3Npb24ubWluLmpzLC9qcy9jb3VudHJ5Lm1pbi5qcywvanMvZ2xvYmFsX213Yi5taW4uanMsL2pzL3BlcnNvbmFsaXphdGlvbi91c2VyLm1pbi5qcywvanMvbWVkaWEvaW1hZ2VzL2xhenlsb2FkaW5nLm1pbi5qcywvanMvYm9vdHN0cmFwLm1pbi5qcywvanMvbW9kZXJuaXpyLmpzLC9scC9zZW0vYXNzZXRzL2pzL3Jlc3BvbmQubWluLmpzLC9qcy9nbG9iYWwuanMsL2pzL3hzLm1pbi5qcywvanMvdXNlci1leHBlcmllbmNlL2FuaW1hdGlvbi9hbmltYXRlLW9uLXNjcm9sbC5taW4uanN8MjA3NzA0MzVCRDkxMjk4MUMzNDY1NzlBNzcyMzcyRTI="></script>
+
+<script defer src="/js/user-experience/tooltip/popper.min.js"></script>
+<script defer src="/js/global-phone.min.js"></script>
+
+<!--adding custom js-->
+
+    
+<!-- Page CSS Starts -->
+<!-- Get Template CSS -->
+<link rel="stylesheet" type="text/css" href="/css/component-project/templates/blog/blog.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/component-project/templates/blog/blog-post.min.css"/>
+<!-- ShowCSS --> 
+<!-- Component Css --> 
+
+<!-- Page CSS Ends -->
+<!-- Page Top JS Starts -->
+<!-- Page Top JS Ends -->
+
+    </head>
+<body >
+    <!-- GTM-Noscript -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSKW3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End GTM-Noscript -->
+    
+
+  
+     
+    <nav id="mbnav" class="mainnav abtest">
+        <div id="nav-background"></div>
+        <div class="nav-container">
+            <div class="logo">
+              	
+<a href="/blog" id="cta-navbar-company-logo-en-blog"><svg class="svg-icon svg-labs-logo"><use href="/images/component-project/templates/blog/blog-svg.svg#svg-malwarebytes-labs-logo"></use></svg></a>
+
+            </div>
+            <div id="mb-nav-icon" type="button" data-target="#navbar" data-toggle="collapse" role="button" aria-label="Open mobile menu" tabindex="0" aria-pressed="true" aria-haspopup="true" aria-expanded="false" aria-controls="navbar">
+                &nbsp;
+                <span class="firstline">&nbsp;</span>
+                <span class="secondline">&nbsp;</span>
+                <span class="thirdline">&nbsp;</span>
+            </div>
+            <div id="main-nav-menu">
+                <div id="main-top-nav">
+                                        
+                        <div class="navitem has-dropdown" data-submenu="personal-nav" aria-haspopup="true">
+                                                <button class="navitem-btn" type="button">Personal</button>
+                        <div class="submenu " id="personal-main-nav">
+                            <div class="submenu-container ">
+                                                                <div class="submenu-box divider" role="menuitem">
+                                                                                                            <button type="button" data-submenu="personal-nav" tabindex="-1" class="main-nav-item nav-back-link"><span class="back-arrow"></span>Personal</button>
+                                                                        <div class="submenu-content ">
+                                                                                <ul>
+                                                                                        <li role="none"><div class="title" role="none"><a href="/for-home" target="_self" id="cta-en-us-navbar-_security-antivirus-click">Security &amp; Antivirus</a></div></li>
+                                                                                        <li class="link" role="none"><a href="/getprotection" id="cta-en-us-navbar-_getprotection-click" tabindex="-1">Free virus removal ></a></li>
+                                                                                        <li class="link" role="none"><a href="/premium" id="cta-id" tabindex="-1">Malwarebytes Premium for Windows ></a></li>
+                                                                                        <li class="link" role="none"><a href="/mac" id="cta-en-us-navbar-_mac-click" tabindex="-1">Malwarebytes Premium for Mac ></a></li>
+                                                                                        <li class="link" role="none"><a href="/chromebook" id="cta-en-us-navbar-_chromebook-click" tabindex="-1">Malwarebytes for Chromebook ></a></li>
+                                                                                        <li class="link" role="none"><a href="/android" id="cta-en-us-navbar-_android-click" tabindex="-1">Malwarebytes Premium for Android ></a></li>
+                                                                                        <li class="link" role="none"><a href="/ios" id="cta-en-us-navbar-_ios-click" tabindex="-1">Malwarebytes Premium for iOS ></a></li>
+                                                                                        <li class="link" role="none"><a href="/bundles" id="cta-en-us-navbar-_bundles-click" tabindex="-1">Malwarebytes Premium + Privacy VPN ></a></li>
+                                                                                        <li class="link" role="none"><a href="/adwcleaner" id="cta-en-us-navbar-_adwcleaner-click" tabindex="-1">AdwCleaner for Windows ></a></li>
+                                                                                        <li role="none"><div class="item-divider">&nbsp;</div>
+<div class="title" role="none"><a href="/privacy" target="_self" id="cta-en-us-navbar-_online-privacy-click"> Online Privacy</a></div></li>
+                                                                                        <li class="link" role="none"><a href="/vpn" id="cta-en-us-navbar-_vpn-click" tabindex="-1">Malwarebytes Privacy VPN ></a></li>
+                                                                                        <li class="link" role="none"><a href="/browserguard" id="cta-en-us-navbar-_browserguard-click" tabindex="-1">Malwarebytes Browser Guard ></a></li>
+                                                                                    </ul>
+                                                                            </div>
+                                                                    </div>
+                                                                <div class="submenu-box divider" role="menuitem">
+                                                                                                            <div class="submenu-content submenu-gradient">
+                                                                                <ul>
+                                                                                        <li class="title" role="none">How can we help?</li>
+                                                                                        <li role="none"><p class="link" style="font-size: 16px; color: #3d3d3d; font-weight: 400;">Have a current computer infection?</p>
+<h5><a href="/getprotection" id="cta-en-us-navbar-getprotection-click"><span style="font-size: 14pt; color: #0d3ecc;">Clean your device now</span>&nbsp;<svg width="40" height="16" viewbox="0 0 40 16" xmlns="http://www.w3.org/2000/svg" class="text-arrow"> 
+<title>Clean your device now</title>
+<g id="Homepage1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Homepage-mobile1" transform="translate(-19.000000, -1149.000000)" fill="#0D3ECC" stroke="#0D3ECC"> <g id="new-arrow1" transform="translate(0.000000, 774.000000)"> <g id="Mobile---30.-Promotional-content-component1"> <g> <g id="link-31" transform="translate(20.000000, 303.000000)"> <g id="Blue-arrow1" transform="translate(0.000000, 73.000000)"> <g id="blue-arrow11"> <path d="M37.1901823,6.65312103 L2.61139809,6.52123236 L8.23338976,1.22246833 C8.53019664,0.942959836 8.53019664,0.489315325 8.23338976,0.209806827 C7.93658287,-0.069935609 7.45575714,-0.069935609 7.15895532,0.209806827 L0.322590191,6.65312103 C0.127933827,6.78279445 0,6.99557324 0,7.23736994 C0,7.24104134 0.00108401327,7.24445015 0.00114479906,7.24812155 C0.00105362037,7.25596087 0.00340400428,7.26336096 0.00361675454,7.27120028 C0.0071423304,7.34122421 0.0216093486,7.40803984 0.0449510922,7.47138938 C0.058648157,7.51160289 0.0783427532,7.54788242 0.0997697444,7.58576132 C0.118967923,7.61793022 0.14024295,7.64838039 0.164263468,7.67725983 C0.185660067,7.70409589 0.196662295,7.7355964 0.222602631,7.76001669 L7.20915931,14.3448922 C7.35756276,14.4847634 7.55197091,14.5546966 7.74637907,14.5546966 C7.94078722,14.5546966 8.13519538,14.4847634 8.28359882,14.3448922 C8.5804057,14.0651498 8.5804057,13.6119683 8.28359882,13.3322307 L2.57677045,7.95350752 L37.1901823,7.95350752 C37.609665,7.95350752 38,7.67294749 38,7.27734832 C38,6.88174914 37.609665,6.65312103 37.1901823,6.65312103 Z" id="Path1" stroke-width="0.5" fill-rule="nonzero" transform="translate(19.000000, 7.277348) scale(-1, 1) translate(-19.000000, -7.277348) "></path> </g> </g> </g> </g> </g> </g> </g> </g> </svg></a></h5></li>
+                                                                                        <li role="none"><div class="item-divider">&nbsp;</div></li>
+                                                                                        <li role="none"><p class="link" style="font-size: 16px; color: #3d3d3d; font-weight: 400;">Try out Malwarebytes Premium, with a full-featured trial</p>
+<h5><a href="/getprotection" id="cta-en-us-navbar-download-now-click" tabindex="-1"><span style="font-size: 14pt; color: #0d3ecc;">Download now </span>&nbsp;<svg width="40" height="16" viewbox="0 0 40 16" xmlns="http://www.w3.org/2000/svg" class="text-arrow"> 
+<title>Download now to</title>
+<g id="Homepage3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Homepage-mobile3" transform="translate(-19.000000, -1149.000000)" fill="#0D3ECC" stroke="#0D3ECC"> <g id="new-arrow3" transform="translate(0.000000, 774.000000)"> <g id="Mobile---30.-Promotional-content-component3"> <g> <g id="link-33" transform="translate(20.000000, 303.000000)"> <g id="Blue-arrow3" transform="translate(0.000000, 73.000000)"> <g id="blue-arrow33"> <path d="M37.1901823,6.65312103 L2.61139809,6.52123236 L8.23338976,1.22246833 C8.53019664,0.942959836 8.53019664,0.489315325 8.23338976,0.209806827 C7.93658287,-0.069935609 7.45575714,-0.069935609 7.15895532,0.209806827 L0.322590191,6.65312103 C0.127933827,6.78279445 0,6.99557324 0,7.23736994 C0,7.24104134 0.00108401327,7.24445015 0.00114479906,7.24812155 C0.00105362037,7.25596087 0.00340400428,7.26336096 0.00361675454,7.27120028 C0.0071423304,7.34122421 0.0216093486,7.40803984 0.0449510922,7.47138938 C0.058648157,7.51160289 0.0783427532,7.54788242 0.0997697444,7.58576132 C0.118967923,7.61793022 0.14024295,7.64838039 0.164263468,7.67725983 C0.185660067,7.70409589 0.196662295,7.7355964 0.222602631,7.76001669 L7.20915931,14.3448922 C7.35756276,14.4847634 7.55197091,14.5546966 7.74637907,14.5546966 C7.94078722,14.5546966 8.13519538,14.4847634 8.28359882,14.3448922 C8.5804057,14.0651498 8.5804057,13.6119683 8.28359882,13.3322307 L2.57677045,7.95350752 L37.1901823,7.95350752 C37.609665,7.95350752 38,7.67294749 38,7.27734832 C38,6.88174914 37.609665,6.65312103 37.1901823,6.65312103 Z" id="Path3" stroke-width="0.5" fill-rule="nonzero" transform="translate(19.000000, 7.277348) scale(-1, 1) translate(-19.000000, -7.277348) "></path> </g> </g> </g> </g> </g> </g> </g> </g> </svg></a></h5></li>
+                                                                                        <li role="none"><div class="item-divider">&nbsp;</div></li>
+                                                                                        <li role="none"><p class="link" style="font-size: 16px; color: #3d3d3d; font-weight: 400;">Find the right solution for you</p>
+<h5><a href="/pricing" id="cta-en-us-navbar-_personal-pricing-click" tabindex="-1"><span style="font-size: 14pt; color: #0d3ecc;">See personal pricing</span>&nbsp;<svg width="40" height="16" viewbox="0 0 40 16" xmlns="http://www.w3.org/2000/svg" class="text-arrow"> 
+<title>See personal pricing</title>
+<g id="Homepage3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Homepage-mobile3" transform="translate(-19.000000, -1149.000000)" fill="#0D3ECC" stroke="#0D3ECC"> <g id="new-arrow3" transform="translate(0.000000, 774.000000)"> <g id="Mobile---30.-Promotional-content-component3"> <g> <g id="link-33" transform="translate(20.000000, 303.000000)"> <g id="Blue-arrow3" transform="translate(0.000000, 73.000000)"> <g id="blue-arrow33"> <path d="M37.1901823,6.65312103 L2.61139809,6.52123236 L8.23338976,1.22246833 C8.53019664,0.942959836 8.53019664,0.489315325 8.23338976,0.209806827 C7.93658287,-0.069935609 7.45575714,-0.069935609 7.15895532,0.209806827 L0.322590191,6.65312103 C0.127933827,6.78279445 0,6.99557324 0,7.23736994 C0,7.24104134 0.00108401327,7.24445015 0.00114479906,7.24812155 C0.00105362037,7.25596087 0.00340400428,7.26336096 0.00361675454,7.27120028 C0.0071423304,7.34122421 0.0216093486,7.40803984 0.0449510922,7.47138938 C0.058648157,7.51160289 0.0783427532,7.54788242 0.0997697444,7.58576132 C0.118967923,7.61793022 0.14024295,7.64838039 0.164263468,7.67725983 C0.185660067,7.70409589 0.196662295,7.7355964 0.222602631,7.76001669 L7.20915931,14.3448922 C7.35756276,14.4847634 7.55197091,14.5546966 7.74637907,14.5546966 C7.94078722,14.5546966 8.13519538,14.4847634 8.28359882,14.3448922 C8.5804057,14.0651498 8.5804057,13.6119683 8.28359882,13.3322307 L2.57677045,7.95350752 L37.1901823,7.95350752 C37.609665,7.95350752 38,7.67294749 38,7.27734832 C38,6.88174914 37.609665,6.65312103 37.1901823,6.65312103 Z" id="Path3" stroke-width="0.5" fill-rule="nonzero" transform="translate(19.000000, 7.277348) scale(-1, 1) translate(-19.000000, -7.277348) "></path> </g> </g> </g> </g> </g> </g> </g> </g> </svg></a></h5></li>
+                                                                                        <li role="none"><div class="item-divider">&nbsp;</div></li>
+                                                                                        <li role="none"><p class="link" style="font-size: 16px; color: #3d3d3d; font-weight: 400;">Activate, upgrade and manage your subscription in MyAccount</p>
+<h5><a href="https://my.malwarebytes.com/login" id="cta-en-us-navbar-my-malwarebytes-overview-click" tabindex="-1"><span style="font-size: 14pt; color: #0d3ecc;">Sign in to your account</span>&nbsp;<svg width="40" height="16" viewbox="0 0 40 16" xmlns="http://www.w3.org/2000/svg" class="text-arrow"> 
+<title>Sign in to your account</title>
+<g id="Homepage3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Homepage-mobile3" transform="translate(-19.000000, -1149.000000)" fill="#0D3ECC" stroke="#0D3ECC"> <g id="new-arrow3" transform="translate(0.000000, 774.000000)"> <g id="Mobile---30.-Promotional-content-component3"> <g> <g id="link-33" transform="translate(20.000000, 303.000000)"> <g id="Blue-arrow3" transform="translate(0.000000, 73.000000)"> <g id="blue-arrow33"> <path d="M37.1901823,6.65312103 L2.61139809,6.52123236 L8.23338976,1.22246833 C8.53019664,0.942959836 8.53019664,0.489315325 8.23338976,0.209806827 C7.93658287,-0.069935609 7.45575714,-0.069935609 7.15895532,0.209806827 L0.322590191,6.65312103 C0.127933827,6.78279445 0,6.99557324 0,7.23736994 C0,7.24104134 0.00108401327,7.24445015 0.00114479906,7.24812155 C0.00105362037,7.25596087 0.00340400428,7.26336096 0.00361675454,7.27120028 C0.0071423304,7.34122421 0.0216093486,7.40803984 0.0449510922,7.47138938 C0.058648157,7.51160289 0.0783427532,7.54788242 0.0997697444,7.58576132 C0.118967923,7.61793022 0.14024295,7.64838039 0.164263468,7.67725983 C0.185660067,7.70409589 0.196662295,7.7355964 0.222602631,7.76001669 L7.20915931,14.3448922 C7.35756276,14.4847634 7.55197091,14.5546966 7.74637907,14.5546966 C7.94078722,14.5546966 8.13519538,14.4847634 8.28359882,14.3448922 C8.5804057,14.0651498 8.5804057,13.6119683 8.28359882,13.3322307 L2.57677045,7.95350752 L37.1901823,7.95350752 C37.609665,7.95350752 38,7.67294749 38,7.27734832 C38,6.88174914 37.609665,6.65312103 37.1901823,6.65312103 Z" id="Path3" stroke-width="0.5" fill-rule="nonzero" transform="translate(19.000000, 7.277348) scale(-1, 1) translate(-19.000000, -7.277348) "></path> </g> </g> </g> </g> </g> </g> </g> </g> </svg></a></h5></li>
+                                                                                        <li role="none"><div class="item-divider">&nbsp;</div></li>
+                                                                                        <li role="none"><p class="link" style="font-size: 16px; color: #3d3d3d; font-weight: 400;">Get answers to frequently asked questions and troubleshooting tips</p>
+<h5><a href="https://support.malwarebytes.com/hc/en-us" id="cta-en-us-navbar-support-malwarebytes-hc-en-us" tabindex="-1"><span style="font-size: 14pt; color: #0d3ecc;">Visit our support page</span>&nbsp;<svg width="40" height="16" viewbox="0 0 40 16" xmlns="http://www.w3.org/2000/svg" class="text-arrow"> 
+<title>Visit our support page</title>
+<g id="Homepage3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Homepage-mobile3" transform="translate(-19.000000, -1149.000000)" fill="#0D3ECC" stroke="#0D3ECC"> <g id="new-arrow3" transform="translate(0.000000, 774.000000)"> <g id="Mobile---30.-Promotional-content-component3"> <g> <g id="link-33" transform="translate(20.000000, 303.000000)"> <g id="Blue-arrow3" transform="translate(0.000000, 73.000000)"> <g id="blue-arrow33"> <path d="M37.1901823,6.65312103 L2.61139809,6.52123236 L8.23338976,1.22246833 C8.53019664,0.942959836 8.53019664,0.489315325 8.23338976,0.209806827 C7.93658287,-0.069935609 7.45575714,-0.069935609 7.15895532,0.209806827 L0.322590191,6.65312103 C0.127933827,6.78279445 0,6.99557324 0,7.23736994 C0,7.24104134 0.00108401327,7.24445015 0.00114479906,7.24812155 C0.00105362037,7.25596087 0.00340400428,7.26336096 0.00361675454,7.27120028 C0.0071423304,7.34122421 0.0216093486,7.40803984 0.0449510922,7.47138938 C0.058648157,7.51160289 0.0783427532,7.54788242 0.0997697444,7.58576132 C0.118967923,7.61793022 0.14024295,7.64838039 0.164263468,7.67725983 C0.185660067,7.70409589 0.196662295,7.7355964 0.222602631,7.76001669 L7.20915931,14.3448922 C7.35756276,14.4847634 7.55197091,14.5546966 7.74637907,14.5546966 C7.94078722,14.5546966 8.13519538,14.4847634 8.28359882,14.3448922 C8.5804057,14.0651498 8.5804057,13.6119683 8.28359882,13.3322307 L2.57677045,7.95350752 L37.1901823,7.95350752 C37.609665,7.95350752 38,7.67294749 38,7.27734832 C38,6.88174914 37.609665,6.65312103 37.1901823,6.65312103 Z" id="Path3" stroke-width="0.5" fill-rule="nonzero" transform="translate(19.000000, 7.277348) scale(-1, 1) translate(-19.000000, -7.277348) "></path> </g> </g> </g> </g> </g> </g> </g> </g> </svg></a></h5></li>
+                                                                                    </ul>
+                                                                            </div>
+                                                                    </div>
+                                                                <div class="submenu-box " role="menuitem">
+                                                                    </div>
+                                                            </div>
+                        </div>
+                                            </div>
+                                        
+                        <div class="navitem has-dropdown" data-submenu="business-nav" aria-haspopup="true">
+                                                <button class="navitem-btn" type="button">Business</button>
+                        <div class="submenu " id="business-nav">
+                            <div class="submenu-container submenu-container-full">
+                                                                <div class="submenu-box divider" role="menuitem">
+                                                                                                            <button type="button" data-submenu="business-nav" tabindex="-1" class="main-nav-item nav-back-link"><span class="back-arrow"></span>Business</button>
+                                                                        <div class="submenu-content ">
+                                                                                <ul>
+                                                                                        <li role="none"><div class="title" role="none"><a href="/business/solutions" target="_self" id="cta-en-us-navbar-_business-solutions-click">Solutions</a></div></li>
+                                                                                        <li class="subtitle" role="none">BY COMPANY SIZE</li>
+                                                                                        <li class="link" role="none"><a href="/business/solutions/small-business" id="cta-en-us-navbar-_business_solutions_small_business-click" tabindex="-1">Small Businesses</a></li>
+                                                                                        <li role="none"><div><svg width="14" height="15" viewbox="0 0 14 15" xmlns="http://www.w3.org/2000/svg"> 
+<title>single figure icon</title>
+<g id="Final-single-figure" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Icon-assets" transform="translate(-39.000000, -33.000000)" fill="#E87613" fill-rule="nonzero"> <g id="Group" transform="translate(39.000000, 33.000000)"> <g id="group-single-figure" transform="translate(0.714286, 0.000000)"> <path d="M10.2793827,7.53505765 C9.29392384,6.78312839 8.88326078,6.58616391 8.05698457,6.34309754 C9.0589632,5.74478031 9.73328057,4.65565597 9.73328057,3.41695232 C9.73328057,1.52851356 8.18045113,0 6.26197072,0 C4.3434903,0 2.79066086,1.53318791 2.79066086,3.41695232 C2.79066086,4.65565597 3.46022952,5.74478031 4.46695687,6.34309754 C3.65017808,6.58616391 3.33026768,6.73878622 2.26830233,7.52103459 C1.20633699,8.30328296 0.343689376,10.1911397 0.234290931,10.7182569 C0.124892487,11.245374 0.0601503759,11.9289498 0.0601503759,12.195388 L0.0601503759,12.513244 C0.0601503759,13.8875039 1.19034428,15 2.58646617,15 L9.94697269,15 C11.3430946,15 12.4732885,13.8875039 12.4732885,12.513244 C12.4732885,12.4789654 12.4732885,12.3730134 12.4732885,12.195388 C12.4732885,11.9289498 12.5313875,12.6870321 12.4210526,11.4054222 C12.3107178,10.1238124 11.2648415,8.28698691 10.2793827,7.53505765 Z M3.54095766,3.41695232 C3.54095766,1.94453101 4.75662841,0.747896541 6.25247329,0.747896541 C7.74831816,0.747896541 8.96398892,1.94453101 8.96398892,3.41695232 C8.96398892,4.83795575 7.8290463,6.00186974 6.40918085,6.08133375 C6.35694499,6.08133375 6.30470914,6.08133375 6.25247329,6.08133375 C6.20023744,6.08133375 6.14800158,6.08133375 6.09576573,6.08133375 C4.67590028,6.00186974 3.54095766,4.83795575 3.54095766,3.41695232 Z M11.7039968,12.513244 C11.7039968,13.4714864 10.9109616,14.2521035 9.93747527,14.2521035 L2.57696874,14.2521035 C1.60348239,14.2521035 0.810447171,13.4714864 0.810447171,12.513244 L0.810447171,12.195388 C0.810447171,9.29261452 3.16580926,6.918043 6.09576573,6.83390464 C6.14800158,6.838579 6.20498615,6.838579 6.257222,6.838579 C6.30945786,6.838579 6.36644242,6.838579 6.41867827,6.83390464 C9.34863474,6.918043 11.7039968,9.29261452 11.7039968,12.195388 L11.7039968,12.513244 L11.7039968,12.513244 Z" id="Shape-single-figure"></path> </g> </g> </g> </g> </svg>&nbsp;<span class="employee-text">1-99 Employees</span>&nbsp;<a href="/pricing/business" class="cta"><svg height="18" viewbox="0 0 74 18" width="74" xmlns="http://www.w3.org/2000/svg"> 
+<title>Buy Online</title>
+<lineargradient id="a" x1="0%" x2="100%" y1="47.041636%" y2="52.958364%"> <stop offset="0" stop-color="#ff003a" stop-opacity=".801382"></stop> <stop offset=".493496001" stop-color="#ef4a50"></stop> <stop offset="1" stop-color="#ff4b2b" stop-opacity=".789172"></stop> </lineargradient> <g fill="none" fill-rule="evenodd"> <rect fill="url(#a)" height="18" rx="4" width="74"></rect> <path d="m7.81 12c1.65 0 2.51-.69 2.51-2v-.04c0-.96-.5-1.49-1.43-1.68.8-.23 1.16-.78 1.16-1.53v-.04c0-1.22-.81-1.86-2.37-1.86h-2.81v7.15zm-.39-4.21h-.97v-1.83h.96c.76 0 1.1.27 1.1.87v.04c0 .64-.31.92-1.09.92zm.14 3.09h-1.11v-2.05h1.03c.88 0 1.24.34 1.24 1v.04c0 .65-.36 1.01-1.16 1.01zm7.29 1.23c1.93 0 3.02-1.01 3.02-2.96v-4.3h-1.63v4.2c0 1.31-.42 1.77-1.38 1.77-.98 0-1.33-.52-1.33-1.71v-4.26h-1.63v4.36c0 1.9 1.07 2.9 2.95 2.9zm8.35-.11v-3.08l2.23-4.07h-1.57l-1.42 2.74-1.45-2.74h-1.78l2.36 4.07v3.08zm9.65.11c2.23 0 3.69-1.55 3.69-3.68v-.08c0-2.15-1.53-3.6-3.68-3.6-2.12 0-3.68 1.51-3.68 3.64v.08c0 2.09 1.43 3.64 3.67 3.64zm.03-1.29c-1.17 0-2.01-.9-2.01-2.36v-.08c0-1.44.75-2.35 1.99-2.35 1.25 0 1.99.95 1.99 2.34v.08c0 1.44-.76 2.37-1.97 2.37zm6.77 1.18v-5.09l2.98 5.09h1.62v-7.15h-1.44v4.71l-2.72-4.71h-1.88v7.15zm11.17 0v-1.27h-2.91v-5.88h-1.62v7.15zm3.24 0v-7.15h-1.63v7.15zm3.52 0v-5.09l2.98 5.09h1.62v-7.15h-1.44v4.71l-2.72-4.71h-1.88v7.15zm11.46 0v-1.26h-3.21v-1.78h2.44v-1.18h-2.44v-1.67h3.05v-1.26h-4.66v7.15z" fill="#fff" fill-rule="nonzero"></path> </g> </svg></a></div></li>
+                                                                                        <li class="link" role="none"><a href="/business/solutions/mid-market" id="cta-en-us-navbar-_business_solutions_mid_market-click" tabindex="-1">Mid-size Businesses</a></li>
+                                                                                        <li role="none"><div><svg xmlns="http://www.w3.org/2000/svg" width="19" height="15" viewbox="0 0 19 15"> 
+<title>two figure icon</title>
+<g fill="none" fill-rule="evenodd"> <g fill="#E87613" fill-rule="nonzero"> <g> <path d="M15.042 6.6c.703-.486 1.169-1.295 1.169-2.206 0-1.491-1.226-2.697-2.74-2.697-1.515 0-2.74 1.206-2.74 2.697 0 .911.46 1.72 1.168 2.206-.603.206-1.154.524-1.62.935-.64-.537-1.396-.949-2.222-1.192 1.002-.598 1.676-1.687 1.676-2.926C9.733 1.529 8.18 0 6.262 0 4.343 0 2.791 1.533 2.791 3.417c0 1.239.67 2.328 1.676 2.926-.817.243-.947.31-2.199 1.178-1.251.868-2.06 2.644-2.156 3.884-.095 1.24-.052.524-.052.79v.318C.06 13.888 1.19 15 2.586 15h7.361c1.396 0 2.526-1.112 2.526-2.487v-.318c0-.266-.019-.532-.052-.79h5.846c.01 0 .019-.009.019-.018v-.309c-.01-2.075-1.358-3.837-3.244-4.478zM11.49 4.39c0-1.076.888-1.95 1.98-1.95 1.093 0 1.98.874 1.98 1.95 0 1.06-.868 1.925-1.941 1.948h-.076c-1.078-.018-1.943-.883-1.943-1.949zm-7.949-.973c0-1.472 1.216-2.67 2.711-2.67 1.496 0 2.712 1.198 2.712 2.67 0 1.421-1.135 2.585-2.555 2.664h-.313c-1.42-.08-2.555-1.243-2.555-2.664zm8.163 9.096c0 .958-.793 1.74-1.767 1.74h-7.36c-.974 0-1.767-.782-1.767-1.74v-.318c0-2.902 2.356-5.277 5.286-5.361.052.005.109.005.161.005.052 0 .11 0 .162-.005 2.93.084 5.285 2.459 5.285 5.361v.318zm.565-1.86c-.261-.986-.76-1.87-1.439-2.6.703-.597 1.615-.957 2.612-.967h.057c2.075.014 3.785 1.576 3.998 3.567H12.27z" transform="translate(-69 -33) translate(69 33)"></path> </g> </g> </g> </svg>&nbsp;<span class="employee-text">100-999 Employees</span></div></li>
+                                                                                        <li class="link" role="none"><a href="/business/solutions/enterprise" id="cta-en-us-navbar-_business_solutions_enterprise-click" tabindex="-1">Large Enterprise</a></li>
+                                                                                        <li role="none"><div><svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewbox="0 0 25 15"> 
+<title>three figure icon</title>
+<g fill="none" fill-rule="evenodd"> <g fill="#E87613" fill-rule="nonzero"> <g> <g> <path d="M21.042 6.6c.703-.486 1.169-1.295 1.169-2.206 0-1.491-1.226-2.697-2.74-2.697-1.515 0-2.74 1.206-2.74 2.697 0 .911.46 1.72 1.168 2.206-.603.206-1.154.524-1.62.935-.64-.537-1.396-.949-2.222-1.192 1.002-.598 1.676-1.687 1.676-2.926C15.733 1.529 14.18 0 12.262 0c-1.919 0-3.471 1.533-3.471 3.417 0 1.239.67 2.328 1.676 2.926-.817.243-1.562.65-2.199 1.178-.465-.402-1.006-.715-1.6-.916.703-.486 1.168-1.295 1.168-2.206 0-1.492-1.225-2.698-2.74-2.698-1.515 0-2.74 1.206-2.74 2.698 0 .911.46 1.72 1.168 2.206C1.64 7.245.286 9.007.286 11.078v.309c0 .01.01.018.019.018h5.807c-.033.258-.052.524-.052.79v.318C6.06 13.888 7.19 15 8.586 15h7.361c1.396 0 2.526-1.112 2.526-2.487v-.318c0-.266-.019-.532-.052-.79h5.846c.01 0 .019-.009.019-.018v-.309c-.01-2.075-1.358-3.837-3.244-4.478zM17.49 4.39c0-1.076.888-1.95 1.98-1.95 1.093 0 1.98.874 1.98 1.95 0 1.06-.868 1.925-1.941 1.948h-.076c-1.078-.018-1.943-.883-1.943-1.949zm-7.949-.973c0-1.472 1.216-2.67 2.711-2.67 1.496 0 2.712 1.198 2.712 2.67 0 1.421-1.135 2.585-2.555 2.664h-.313c-1.42-.08-2.555-1.243-2.555-2.664zm-6.44.972c0-1.075.889-1.949 1.98-1.949 1.093 0 1.981.874 1.981 1.95 0 1.06-.869 1.925-1.942 1.948h-.076C3.97 6.32 3.102 5.455 3.102 4.39zm3.144 6.264h-5.19C1.269 8.662 2.978 7.1 5.053 7.086h.057c.988.005 1.89.365 2.588.95-.683.728-1.191 1.626-1.453 2.617zm11.459 1.86c0 .958-.793 1.74-1.767 1.74h-7.36c-.974 0-1.767-.782-1.767-1.74v-.318c0-2.902 2.356-5.277 5.286-5.361.052.005.109.005.161.005.052 0 .11 0 .162-.005 2.93.084 5.285 2.459 5.285 5.361v.318zm.565-1.86c-.261-.986-.76-1.87-1.439-2.6.703-.597 1.615-.957 2.612-.967h.057c2.075.014 3.785 1.576 3.998 3.567H18.27z" transform="translate(-104 -33) translate(104 33)"></path> </g> </g> </g> </g> </svg>&nbsp;<span class="employee-text">1000+ Employees</span></div></li>
+                                                                                        <li class="subtitle" role="none">BY INDUSTRY</li>
+                                                                                        <li class="link" role="none"><a href="/education" id="cta-en-us-navbar-_education-click" tabindex="-1">Education</a></li>
+                                                                                        <li class="link" role="none"><a href="/finance" id="cta-en-us-navbar-_finance-click" tabindex="-1">Finance</a></li>
+                                                                                        <li class="link" role="none"><a href="/healthcare" id="cta-en-us-navbar-_healthcare-click" tabindex="-1">Healthcare</a></li>
+                                                                                        <li class="link" role="none"><a href="/government" id="cta-en-us-navbar-_government-click" tabindex="-1">Government</a></li>
+                                                                                    </ul>
+                                                                            </div>
+                                                                    </div>
+                                                                <div class="submenu-box divider" role="menuitem">
+                                                                                                            <div class="submenu-content ">
+                                                                                <ul>
+                                                                                        <li role="none"><div class="title" role="none"><a href="/business" target="_self" id="cta-en-us-navbar-_business-products-list-click">Products</a></div></li>
+                                                                                        <li class="subtitle" role="none">CLOUD-BASED SECURITY MANAGEMENT </li>
+                                                                                        <li class="link" role="none"><a href="/business/endpoint-protection" id="cta-en-us-navbar-_business_endpoint_protection-click" tabindex="-1">Endpoint Protection</a></li>
+                                                                                        <li class="link" role="none"><a href="/business/endpoint-protection/server-security" id="cta-en-us-navbar-_business_endpoint_protection_server_security-click" tabindex="-1">Endpoint Protection for Servers</a></li>
+                                                                                        <li class="link" role="none"><a href="/business/edr" id="cta-en-us-navbar-_business_edr-click" tabindex="-1">Endpoint Detection & Response</a></li>
+                                                                                        <li class="link" role="none"><a href="/business/edr/server-security" id="cta-en-us-navbar-_business_edr_server_security-click" tabindex="-1">Endpoint Detection & Response for Servers</a></li>
+                                                                                        <li class="link" role="none"><a href="/business/incident-response" id="cta-en-us-navbar-_business_incident_response-click" tabindex="-1">Incident Response</a></li>
+                                                                                        <li class="link" role="none"><a href="/business/cloud" id="cta-en-us-navbar-_business_cloud-click" tabindex="-1">Nebula Platform Architecture</a></li>
+                                                                                        <li class="subtitle" role="none">CLOUD-BASED SECURITY MODULES</li>
+                                                                                        <li role="none"><div class="link"><a href="/business/dns-filtering" id="cta-en-us-navbar-_business_dns-filtering-click" tabindex="-1">DNS Filtering</a></div></li>
+                                                                                        <li role="none"><div class="link"><a href="/business/vulnerability-patch-management" id="cta-en-us-navbar-_business_vulnerability-patch-management-click" tabindex="-1">Vulnerability &amp; Patch Management</a></div></li>
+                                                                                        <li class="link" role="none"><a href="/business/connector-solution" id="cta-en-us-navbar-_business_connector_solution-click" tabindex="-1">Remediation Connector Solution</a></li>
+                                                                                        <li class="subtitle" role="none">SECURITY SERVICES</li>
+                                                                                        <li role="none"><div class="link"><a href="/business/managed-detection-and-response" id="cta-en-us-navbar-_business_mdr-click" tabindex="-1">Managed Detection and Response</a>&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="34" height="18" viewbox="0 0 34 18"> 
+<title>New</title>
+<defs> <lineargradient id="67ksh6zq7b" x1="0%" x2="100%" y1="35.986%" y2="64.014%"> <stop offset="0%" stop-color="#FF003A" stop-opacity=".801"></stop> <stop offset="49.35%" stop-color="#EF4A50"></stop> <stop offset="100%" stop-color="#FF4B2B" stop-opacity=".789"></stop> </lineargradient> </defs> <g fill="none" fill-rule="evenodd"> <g> <g> <g> <g transform="translate(-724 -321) translate(165 100) translate(381 179) translate(178 42)"> <rect width="34" height="18" fill="url(#67ksh6zq7b)" rx="4"></rect> <path fill="#FFF" fill-rule="nonzero" d="M6.84 12V6.91L9.82 12h1.62V4.85H10v4.71L7.28 4.85H5.4V12h1.44zm11.46 0v-1.26h-3.21V8.96h2.44V7.78h-2.44V6.11h3.05V4.85h-4.66V12h4.82zm4.37 0l1.31-4.94L25.27 12h1.65l1.74-7.15h-1.5L26 9.82l-1.27-4.97h-1.38l-1.22 4.94-1.12-4.94h-1.64L21.11 12h1.56z"></path> </g> </g> </g> </g> </g> </svg></div></li>
+                                                                                        <li role="none"><div class="link"><a href="/business/cloud-storage-scanning" id="cta-en-us-navbar-_business_cloud-storage-scanning-click" tabindex="-1">Cloud Storage Scanning Service</a>&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="34" height="18" viewbox="0 0 34 18"> 
+<title>New</title>
+<defs> <lineargradient id="67ksh6zq7b" x1="0%" x2="100%" y1="35.986%" y2="64.014%"> <stop offset="0%" stop-color="#FF003A" stop-opacity=".801"></stop> <stop offset="49.35%" stop-color="#EF4A50"></stop> <stop offset="100%" stop-color="#FF4B2B" stop-opacity=".789"></stop> </lineargradient> </defs> <g fill="none" fill-rule="evenodd"> <g> <g> <g> <g transform="translate(-724 -321) translate(165 100) translate(381 179) translate(178 42)"> <rect width="34" height="18" fill="url(#67ksh6zq7b)" rx="4"></rect> <path fill="#FFF" fill-rule="nonzero" d="M6.84 12V6.91L9.82 12h1.62V4.85H10v4.71L7.28 4.85H5.4V12h1.44zm11.46 0v-1.26h-3.21V8.96h2.44V7.78h-2.44V6.11h3.05V4.85h-4.66V12h4.82zm4.37 0l1.31-4.94L25.27 12h1.65l1.74-7.15h-1.5L26 9.82l-1.27-4.97h-1.38l-1.22 4.94-1.12-4.94h-1.64L21.11 12h1.56z"></path> </g> </g> </g> </g> </g> </svg></div></li>
+                                                                                        <li role="none"><div class="link"><a href="/business/services/malware-removal" id="cta-en-us-navbar-_business_malware-removal-service-click" tabindex="-1">Malware Removal Service</a></div></li>
+                                                                                        <li class="subtitle" role="none">NEXT-GEN ANTIVIRUS FOR SMALL BUSINESS</li>
+                                                                                        <li class="link" role="none"><a href="/business/teams" id="cta-en-us-navbar-_business_teams-click" tabindex="-1">For Teams</a></li>
+                                                                                    </ul>
+                                                                            </div>
+                                                                    </div>
+                                                                <div class="submenu-box divider" role="menuitem">
+                                                                                                            <div class="submenu-content submenu-gradient">
+                                                                                <ul>
+                                                                                        <li class="title" role="none">Get Started</li>
+                                                                                        <li role="none"><div>
+<ul>
+<li class="section-label top-label" role="none">Find the right solution for your business</li>
+<li role="none"><a href="/pricing/business" id="cta-en-us-navbar-_business-pricing-click" class="bold-link" tabindex="-1"> <span class="cta-text">See business pricing <svg width="40" height="16" viewbox="0 0 40 16" xmlns="http://www.w3.org/2000/svg" class="text-arrow"> 
+<title>See business pricing</title>
+<g id="Homepage4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Homepage-mobile4" transform="translate(-19.000000, -1149.000000)" fill="#0D3ECC" stroke="#0D3ECC"> <g id="new-arrow4" transform="translate(0.000000, 774.000000)"> <g id="Mobile---30.-Promotional-content-component4"> <g> <g id="link-34" transform="translate(20.000000, 303.000000)"> <g id="Blue-arrow4" transform="translate(0.000000, 73.000000)"> <g id="blue-arrow44"> <path d="M37.1901823,6.65312103 L2.61139809,6.52123236 L8.23338976,1.22246833 C8.53019664,0.942959836 8.53019664,0.489315325 8.23338976,0.209806827 C7.93658287,-0.069935609 7.45575714,-0.069935609 7.15895532,0.209806827 L0.322590191,6.65312103 C0.127933827,6.78279445 0,6.99557324 0,7.23736994 C0,7.24104134 0.00108401327,7.24445015 0.00114479906,7.24812155 C0.00105362037,7.25596087 0.00340400428,7.26336096 0.00361675454,7.27120028 C0.0071423304,7.34122421 0.0216093486,7.40803984 0.0449510922,7.47138938 C0.058648157,7.51160289 0.0783427532,7.54788242 0.0997697444,7.58576132 C0.118967923,7.61793022 0.14024295,7.64838039 0.164263468,7.67725983 C0.185660067,7.70409589 0.196662295,7.7355964 0.222602631,7.76001669 L7.20915931,14.3448922 C7.35756276,14.4847634 7.55197091,14.5546966 7.74637907,14.5546966 C7.94078722,14.5546966 8.13519538,14.4847634 8.28359882,14.3448922 C8.5804057,14.0651498 8.5804057,13.6119683 8.28359882,13.3322307 L2.57677045,7.95350752 L37.1901823,7.95350752 C37.609665,7.95350752 38,7.67294749 38,7.27734832 C38,6.88174914 37.609665,6.65312103 37.1901823,6.65312103 Z" id="Path4" stroke-width="0.5" fill-rule="nonzero" transform="translate(19.000000, 7.277348) scale(-1, 1) translate(-19.000000, -7.277348) "></path> </g> </g> </g> </g> </g> </g> </g> </g> </svg></span> </a></li>
+</ul>
+<hr />
+<ul>
+<li class="section-label" role="none">Don't know where to start?</li>
+<li role="none"><a href="/business/product-selector" id="cta-en-us-navbar-_business-choose-product-click" class="bold-link" tabindex="-1"> <span class="cta-text">Help me choose a product <svg width="40" height="16" viewbox="0 0 40 16" xmlns="http://www.w3.org/2000/svg" class="text-arrow"> 
+<title>See business products selector</title>
+<g id="Homepage5" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Homepage-mobile5" transform="translate(-19.000000, -1149.000000)" fill="#0D3ECC" stroke="#0D3ECC"> <g id="new-arrow5" transform="translate(0.000000, 774.000000)"> <g id="Mobile---30.-Promotional-content-component5"> <g> <g id="link-35" transform="translate(20.000000, 303.000000)"> <g id="Blue-arrow5" transform="translate(0.000000, 73.000000)"> <g id="blue-arrow55"> <path d="M37.1901823,6.65312103 L2.61139809,6.52123236 L8.23338976,1.22246833 C8.53019664,0.942959836 8.53019664,0.489315325 8.23338976,0.209806827 C7.93658287,-0.069935609 7.45575714,-0.069935609 7.15895532,0.209806827 L0.322590191,6.65312103 C0.127933827,6.78279445 0,6.99557324 0,7.23736994 C0,7.24104134 0.00108401327,7.24445015 0.00114479906,7.24812155 C0.00105362037,7.25596087 0.00340400428,7.26336096 0.00361675454,7.27120028 C0.0071423304,7.34122421 0.0216093486,7.40803984 0.0449510922,7.47138938 C0.058648157,7.51160289 0.0783427532,7.54788242 0.0997697444,7.58576132 C0.118967923,7.61793022 0.14024295,7.64838039 0.164263468,7.67725983 C0.185660067,7.70409589 0.196662295,7.7355964 0.222602631,7.76001669 L7.20915931,14.3448922 C7.35756276,14.4847634 7.55197091,14.5546966 7.74637907,14.5546966 C7.94078722,14.5546966 8.13519538,14.4847634 8.28359882,14.3448922 C8.5804057,14.0651498 8.5804057,13.6119683 8.28359882,13.3322307 L2.57677045,7.95350752 L37.1901823,7.95350752 C37.609665,7.95350752 38,7.67294749 38,7.27734832 C38,6.88174914 37.609665,6.65312103 37.1901823,6.65312103 Z" id="Path5" stroke-width="0.5" fill-rule="nonzero" transform="translate(19.000000, 7.277348) scale(-1, 1) translate(-19.000000, -7.277348) "></path> </g> </g> </g> </g> </g> </g> </g> </g> </svg></span> </a></li>
+</ul>
+<hr />
+<ul>
+<li class="section-label" role="none">See what Malwarebytes can do for you</li>
+<li role="none"><a href="/business/request_trial?ref=nav" id="cta-en-us-navbar-_business-trial-click" class="bold-link" tabindex="-1"> <span class="cta-text">Get a free trial <svg width="40" height="16" viewbox="0 0 40 16" xmlns="http://www.w3.org/2000/svg" class="text-arrow"> 
+<title>Get a free trial</title>
+<g id="Homepage7" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Homepage-mobile7" transform="translate(-19.000000, -1149.000000)" fill="#0D3ECC" stroke="#0D3ECC"> <g id="new-arrow7" transform="translate(0.000000, 774.000000)"> <g id="Mobile---30.-Promotional-content-component7"> <g> <g id="link-37" transform="translate(20.000000, 303.000000)"> <g id="Blue-arrow7" transform="translate(0.000000, 73.000000)"> <g id="blue-arrow67"> <path d="M37.1901823,6.65312103 L2.61139809,6.52123236 L8.23338976,1.22246833 C8.53019664,0.942959836 8.53019664,0.489315325 8.23338976,0.209806827 C7.93658287,-0.069935609 7.45575714,-0.069935609 7.15895532,0.209806827 L0.322590191,6.65312103 C0.127933827,6.78279445 0,6.99557324 0,7.23736994 C0,7.24104134 0.00108401327,7.24445015 0.00114479906,7.24812155 C0.00105362037,7.25596087 0.00340400428,7.26336096 0.00361675454,7.27120028 C0.0071423304,7.34122421 0.0216093486,7.40803984 0.0449510922,7.47138938 C0.058648157,7.51160289 0.0783427532,7.54788242 0.0997697444,7.58576132 C0.118967923,7.61793022 0.14024295,7.64838039 0.164263468,7.67725983 C0.185660067,7.70409589 0.196662295,7.7355964 0.222602631,7.76001669 L7.20915931,14.3448922 C7.35756276,14.4847634 7.55197091,14.5546966 7.74637907,14.5546966 C7.94078722,14.5546966 8.13519538,14.4847634 8.28359882,14.3448922 C8.5804057,14.0651498 8.5804057,13.6119683 8.28359882,13.3322307 L2.57677045,7.95350752 L37.1901823,7.95350752 C37.609665,7.95350752 38,7.67294749 38,7.27734832 C38,6.88174914 37.609665,6.65312103 37.1901823,6.65312103 Z" id="Path7" stroke-width="0.5" fill-rule="nonzero" transform="translate(19.000000, 7.277348) scale(-1, 1) translate(-19.000000, -7.277348) "></path> </g> </g> </g> </g> </g> </g> </g> </g> </svg></span> </a></li>
+</ul>
+<hr />
+<ul>
+<li class="section-label" role="none">Our sales team is ready to help. Call us now</li>
+<li class="section-label" role="none"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16" class="phone-icon"> 
+<title>Phone icon</title>
+<g fill="none" fill-rule="evenodd"> <g fill="#000" fill-rule="nonzero"> <g> <path d="M15.58 12.343l-3.238-2.16c-.411-.271-.962-.182-1.266.206l-.943 1.213c-.122.16-.342.206-.517.109l-.18-.099c-.595-.324-1.335-.728-2.826-2.22C5.119 7.9 4.714 7.16 4.39 6.566l-.098-.18c-.1-.175-.054-.396.106-.519l1.212-.943c.388-.304.478-.854.206-1.265L3.656.419C3.379.002 2.82-.123 2.39.136L1.035.948c-.426.25-.738.655-.871 1.13C-.324 3.857.043 6.923 4.56 11.44 8.154 15.034 10.83 16 12.667 16c.423.002.845-.053 1.253-.164.476-.133.88-.445 1.13-.87l.815-1.354c.26-.431.134-.99-.285-1.269zm-.174.995l-.813 1.354c-.18.308-.47.533-.813.63-1.64.451-4.506.078-8.843-4.259C.601 6.726.227 3.86.678 2.22c.097-.343.324-.635.631-.815L2.663.593c.187-.113.43-.058.55.124l1.174 1.761.984 1.477c.118.178.08.417-.089.55l-1.212.942c-.37.283-.474.793-.247 1.198l.096.175c.34.625.764 1.403 2.311 2.95 1.547 1.546 2.324 1.97 2.949 2.31l.175.097c.405.227.916.122 1.198-.247l.943-1.213c.132-.168.37-.207.549-.089l3.238 2.16c.182.12.236.363.124.55zM9.867 1.6c2.502.003 4.53 2.03 4.533 4.533 0 .148.12.267.267.267.147 0 .266-.12.266-.267-.003-2.797-2.27-5.063-5.066-5.066-.148 0-.267.119-.267.266 0 .148.12.267.267.267z" transform="translate(-145 -33) translate(145 33)"></path> <path d="M9.829 3.657c1.388.002 2.512 1.126 2.514 2.514 0 .127.102.229.228.229.127 0 .229-.102.229-.229-.002-1.64-1.331-2.97-2.971-2.971-.127 0-.229.102-.229.229 0 .126.102.228.229.228z" transform="translate(-145 -33) translate(145 33)"></path> </g> </g> </g> </svg> <span class="global-phonenum">+1-800-520-2796</span></li>
+</ul>
+</div></li>
+                                                                                    </ul>
+                                                                            </div>
+                                                                    </div>
+                                                            </div>
+                        </div>
+                                            </div>
+                                        
+                        <div class="navitem " data-submenu="pricing-nav" aria-haspopup="true">
+                                                <a href="/pricing" class="pricing-link" id="cta-navbar-pricing-en-test"><span>Pricing</span></a>
+                                                                    </div>
+                                        
+                        <div class="navitem has-dropdown" data-submenu="partners-nav" aria-haspopup="true">
+                                                <button class="navitem-btn" type="button">Partners</button>
+                        <div class="submenu " id="partners-main-nav">
+                            <div class="submenu-container ">
+                                                                <div class="submenu-box " role="menuitem">
+                                                                    </div>
+                                                                <div class="submenu-box " role="menuitem">
+                                                                                                            <button type="button" data-submenu="partners-nav" tabindex="-1" class="main-nav-item nav-back-link"><span class="back-arrow"></span>Partners</button>
+                                                                        <div class="submenu-content ">
+                                                                                <div class="submenu-content submenu-gradient">
+<ul>
+<li role="none"><a href="/partners" id="cta-navbar-partners-explore-partnerships-en-test" class="bold-link" tabindex="-1"> <svg xmlns="http://www.w3.org/2000/svg" width="38" height="39" viewbox="0 0 38 39" class="link-icon"> 
+<title>Partner Icon</title>
+<defs> <lineargradient id="prefix__a" x1="50%" x2="50%" y1="-4.64%" y2="100%"> <stop offset="0%" stop-color="#F66B70"></stop> <stop offset="100%" stop-color="#AC2025"></stop> </lineargradient> <path id="prefix__b" d="M0 0L28.095 0 28.095 17.657 0 17.657z"></path> </defs> <g fill="none" fill-rule="evenodd"> <circle cx="19" cy="19.5" r="19" fill="url(#prefix__a)"></circle> <g transform="translate(4.7 11)"></g> <g fill-rule="nonzero"> <path fill="#FFF" d="M3.515 15.908l1.748 1.217 2.086 2.302c.55 1.17 1.727 1.916 3.02 1.916.2 0 .398-.018.594-.053l4.397-.786c.983-.177 1.767-.92 1.998-1.891l.038.002c1.293-.003 2.47-.748 3.025-1.916l2.082-2.309 1.747-1.215c.34-.238.572-.601.644-1.01.072-.409-.023-.83-.262-1.169-.253-.361-.64-.608-1.074-.687-.434-.076-.882.023-1.243.277l-.786.548.065-.371 1.093-6.162c.119-.677-.333-1.324-1.01-1.445l-.724-.128c-.146-.026-.295-.025-.44.003l.056-.315c.119-.678-.333-1.324-1.01-1.446l-.728-.129c-.679-.12-1.326.332-1.446 1.01l-.056.317c-.127-.076-.266-.129-.411-.156l-.729-.131c-.678-.119-1.324.333-1.446 1.01l-.014.077c-.107-.061-.224-.104-.346-.126l-.662-.117c-.299-.053-.607.016-.855.191-.276.197-.463.494-.52.828l-.166.896c-.19-.06-.393-.074-.59-.04l-.74.132c-.151.028-.295.083-.426.163l-.057-.318c-.123-.678-.77-1.128-1.447-1.009l-.728.13c-.677.122-1.128.77-1.008 1.447l.056.317c-.145-.028-.294-.03-.44-.005l-.723.13c-.678.122-1.129.769-1.009 1.447l1.167 6.53-.786-.547c-.362-.253-.81-.351-1.245-.274-.435.078-.821.325-1.074.688-.238.34-.331.76-.26 1.168.073.408.304.771.645 1.009zM15.327 4.576c0-.008 0-.016.002-.024l.216-1.218c.044-.234.267-.39.502-.35l.727.13c.235.043.391.267.35.502l-.925 5.222-.167.939.802.142.163-.914 1.19-6.712c.043-.234.266-.391.501-.35l.728.129c.235.043.391.266.351.501L18.414 10.2l.802.143 1.091-6.162c.042-.236.267-.393.502-.351l.724.129c.234.042.39.266.35.5l-1.091 6.162-.169.951-.09-.02c-.018-.005-.034-.011-.052-.015-1.022-.21-2.074.186-2.704 1.018-.012.016-.02.035-.031.05-.074.102-.14.21-.198.32l.728.367c.396-.734 1.227-1.122 2.044-.955.013.002.024.006.037.01.11.024.219.059.323.104l.016.006c.132.063.288.05.407-.034l.088-.061.005-.006 1.588-1.104c.185-.13.415-.182.638-.142.223.04.42.169.548.356.113.162.158.362.124.557-.034.195-.145.368-.307.482l-1.785 1.243c-.025.017-.048.038-.07.061l-2.154 2.39c-.029.032-.052.068-.07.108-.407.902-1.302 1.483-2.292 1.49-.007-.068-.014-.135-.026-.204l-1.058-5.916-.88-4.92c-.049-.273-.185-.522-.388-.711l.263-1.469zm-2.18-.386c.02-.122.086-.231.185-.304.071-.05.159-.071.245-.058l.666.118c.085.016.16.065.207.137.067.1.093.22.073.34l-.23 1.298c-.074-.002-.147.003-.22.016l-.665.119c-.121.024-.238.067-.344.13l-.014-.08c-.026-.138-.077-.272-.149-.394l.246-1.322zm-9.35 10.007c.13-.186.327-.312.55-.352.222-.04.452.011.637.14l1.683 1.168c.174.121.411.089.546-.075.135-.164.122-.403-.03-.551L5.87 7.189c-.04-.234.115-.458.349-.5l.723-.13c.235-.04.459.116.502.35l1.1 6.16.801-.143-1.099-6.16-.262-1.464c-.041-.235.115-.46.35-.502l.728-.13c.235-.04.459.115.502.35l.262 1.462 1.099 6.16.802-.143-1.1-6.16c-.02-.113.007-.228.074-.32.069-.098.173-.164.29-.185l.74-.132c.118-.021.238.005.337.072.095.064.16.163.18.275l.222 1.24.88 4.92.801-.143-.878-4.918c-.053-.211.07-.426.28-.488l.665-.12c.093-.013.187.012.26.07.091.073.153.177.172.293l.88 4.92 1.058 5.916c.162.92-.45 1.798-1.37 1.962l-4.398.786c-1.144.208-2.282-.393-2.756-1.455-.017-.04-.04-.075-.07-.107l-2.157-2.383c-.02-.023-.044-.043-.07-.06L3.98 15.24c-.162-.114-.273-.288-.307-.484-.034-.195.011-.397.126-.559z" transform="translate(4.5 8.8)"></path> <g fill="#FFA0B4"> <path d="M2.64 0.964L3.454 0.964 3.454 4.222 2.64 4.222z" transform="translate(4.5 8.8) translate(22.66 .74) rotate(-10.628 3.047 2.593)"></path> <path d="M1.039 2.079L1.854 2.079 1.854 3.708 1.039 3.708z" transform="translate(4.5 8.8) translate(22.66 .74) rotate(-10.628 1.446 2.894)"></path> </g> <g fill="#FFA0B4"> <path d="M1.039 0.964L1.854 0.964 1.854 4.222 1.039 4.222z" transform="translate(4.5 8.8) translate(.482 7.715) rotate(-10.01 1.446 2.593)"></path> <path d="M2.643 1.495L3.457 1.495 3.457 3.124 2.643 3.124z" transform="translate(4.5 8.8) translate(.482 7.715) rotate(-10.01 3.05 2.31)"></path> </g> </g> </g> </svg> Explore Partnerships </a></li>
+</ul>
+</div>
+<ul class="submenu-content divider-top">
+<li class="title" role="none">Partner Solutions</li>
+<li class="link" role="none"><a href="/partners/solution-providers" id="cta-navbar-partners-solution-providers-en-test" tabindex="-1">Resellers</a></li>
+<li class="link" role="none"><a href="/partners/managed-service-providers" id="cta-navbar-partners-managed-service-providers-en-test" tabindex="-1">Managed Service Providers</a></li>
+<li class="link" role="none"><a href="/techbench" id="cta-navbar-partners-computer-repair-en-test" tabindex="-1">Computer Repair</a></li>
+<li class="link" role="none"><a href="/integrations" id="cta-navbar-partners-tech-partnerships-en-test" tabindex="-1">Technology Partners</a></li>
+<li role="none"><a href="https://www.malwarebytes.com/pricing/business?quantity=100" id="cta-navbar-partners-buy-now-en-test" class="bold-link">Contact Us <svg width="40" height="16" viewbox="0 0 40 16" xmlns="http://www.w3.org/2000/svg" class="text-arrow"> 
+<title>Buy Now</title>
+<g id="Homepage6" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Homepage-mobile6" transform="translate(-19.000000, -1149.000000)" fill="#0D3ECC" stroke="#0D3ECC"> <g id="new-arrow6" transform="translate(0.000000, 774.000000)"> <g id="Mobile---30.-Promotional-content-component6"> <g> <g id="link-36" transform="translate(20.000000, 303.000000)"> <g id="Blue-arrow6" transform="translate(0.000000, 73.000000)"> <g id="blue-arrow66"> <path d="M37.1901823,6.65312103 L2.61139809,6.52123236 L8.23338976,1.22246833 C8.53019664,0.942959836 8.53019664,0.489315325 8.23338976,0.209806827 C7.93658287,-0.069935609 7.45575714,-0.069935609 7.15895532,0.209806827 L0.322590191,6.65312103 C0.127933827,6.78279445 0,6.99557324 0,7.23736994 C0,7.24104134 0.00108401327,7.24445015 0.00114479906,7.24812155 C0.00105362037,7.25596087 0.00340400428,7.26336096 0.00361675454,7.27120028 C0.0071423304,7.34122421 0.0216093486,7.40803984 0.0449510922,7.47138938 C0.058648157,7.51160289 0.0783427532,7.54788242 0.0997697444,7.58576132 C0.118967923,7.61793022 0.14024295,7.64838039 0.164263468,7.67725983 C0.185660067,7.70409589 0.196662295,7.7355964 0.222602631,7.76001669 L7.20915931,14.3448922 C7.35756276,14.4847634 7.55197091,14.5546966 7.74637907,14.5546966 C7.94078722,14.5546966 8.13519538,14.4847634 8.28359882,14.3448922 C8.5804057,14.0651498 8.5804057,13.6119683 8.28359882,13.3322307 L2.57677045,7.95350752 L37.1901823,7.95350752 C37.609665,7.95350752 38,7.67294749 38,7.27734832 C38,6.88174914 37.609665,6.65312103 37.1901823,6.65312103 Z" id="Path6" stroke-width="0.5" fill-rule="nonzero" transform="translate(19.000000, 7.277348) scale(-1, 1) translate(-19.000000, -7.277348) "></path> </g> </g> </g> </g> </g> </g> </g> </g> </svg></a></li>
+</ul>                                                                            </div>
+                                                                    </div>
+                                                                <div class="submenu-box " role="menuitem">
+                                                                                                            <div class="submenu-content submenu-gradient">
+                                                                                <ul>
+<li class="title" role="none">Partner Success Story</li>
+<li class="partner-highlight" role="none">
+<div><img width="250" height="105" src="/images/partners/optimus-systems.webp" onerror="this.onerror = null; this.src=&quot;/images/partners/optimus-systems.png&quot;" alt="Optimus Systems Logo" /></div>
+<div class="name">Marek Drummond</div>
+<div class="position">Managing Director at Optimus Systems</div>
+<p>"Thanks to the Malwarebytes MSP program, we have this high-quality product in our stack. It&rsquo;s a great addition, and I have confidence that customers&rsquo; systems are protected."</p>
+</li>
+<li role="none"><a href="https://www.malwarebytes.com/resources/files/2019/04/200505-mwb-optimus-systems-case-study-v5.pdf" id="cta-navbar-partners-featured-optimus-en-test" class="bold-link" tabindex="-1">See full story <svg width="40" height="16" viewbox="0 0 40 16" xmlns="http://www.w3.org/2000/svg" class="text-arrow"> 
+<title>See full story</title>
+<g id="Homepage8" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Homepage-mobile8" transform="translate(-19.000000, -1149.000000)" fill="#0D3ECC" stroke="#0D3ECC"> <g id="new-arrow8" transform="translate(0.000000, 774.000000)"> <g id="Mobile---30.-Promotional-content-component8"> <g> <g id="link-38" transform="translate(20.000000, 303.000000)"> <g id="Blue-arrow8" transform="translate(0.000000, 73.000000)"> <g id="blue-arrow88"> <path d="M37.1901823,6.65312103 L2.61139809,6.52123236 L8.23338976,1.22246833 C8.53019664,0.942959836 8.53019664,0.489315325 8.23338976,0.209806827 C7.93658287,-0.069935609 7.45575714,-0.069935609 7.15895532,0.209806827 L0.322590191,6.65312103 C0.127933827,6.78279445 0,6.99557324 0,7.23736994 C0,7.24104134 0.00108401327,7.24445015 0.00114479906,7.24812155 C0.00105362037,7.25596087 0.00340400428,7.26336096 0.00361675454,7.27120028 C0.0071423304,7.34122421 0.0216093486,7.40803984 0.0449510922,7.47138938 C0.058648157,7.51160289 0.0783427532,7.54788242 0.0997697444,7.58576132 C0.118967923,7.61793022 0.14024295,7.64838039 0.164263468,7.67725983 C0.185660067,7.70409589 0.196662295,7.7355964 0.222602631,7.76001669 L7.20915931,14.3448922 C7.35756276,14.4847634 7.55197091,14.5546966 7.74637907,14.5546966 C7.94078722,14.5546966 8.13519538,14.4847634 8.28359882,14.3448922 C8.5804057,14.0651498 8.5804057,13.6119683 8.28359882,13.3322307 L2.57677045,7.95350752 L37.1901823,7.95350752 C37.609665,7.95350752 38,7.67294749 38,7.27734832 C38,6.88174914 37.609665,6.65312103 37.1901823,6.65312103 Z" id="Path8" stroke-width="0.5" fill-rule="nonzero" transform="translate(19.000000, 7.277348) scale(-1, 1) translate(-19.000000, -7.277348) "></path> </g> </g> </g> </g> </g> </g> </g> </g> </svg></a></li>
+</ul>                                                                            </div>
+                                                                    </div>
+                                                            </div>
+                        </div>
+                                            </div>
+                                        
+                        <div class="navitem has-dropdown" data-submenu="resources-nav" aria-haspopup="true">
+                                                <button class="navitem-btn" type="button">Resources</button>
+                        <div class="submenu " id="resources-main-nav">
+                            <div class="submenu-container submenu-container-full">
+                                                                <div class="submenu-box " role="menuitem">
+                                                                                                            <button type="button" data-submenu="resources-nav" tabindex="-1" class="main-nav-item nav-back-link"><span class="back-arrow"></span>Resources</button>
+                                                                        <div class="submenu-content ">
+                                                                                <ul>
+                                                                                        <li role="none"><div class="title" role="none"><a href="/cybersecurity" target="_self" id="cta-en-us-navbar-_resources-learn-cybcersecurity-click">Learn About Cybersecurity</a></div></li>
+                                                                                        <li class="link" role="none"><a href="/antivirus" id="cta-en-us-navbar-_antivirus-click" tabindex="-1">Antivirus</a></li>
+                                                                                        <li class="link" role="none"><a href="/malware" id="cta-en-us-navbar-_malware-click" tabindex="-1">Malware</a></li>
+                                                                                        <li class="link" role="none"><a href="/ransomware" id="cta-en-us-navbar-_ransomware-click" tabindex="-1">Ransomware</a></li>
+                                                                                        <li role="none"><div class="title" role="none"><a href="/blog" target="_self" id="cta-en-us-navbar-_resources-blog-click">Malwarebytes Labs &ndash; Blog</a></div></li>
+                                                                                        <li class="link" role="none"><a href="/glossary" id="cta-en-us-navbar-_glossary-click" tabindex="-1">Glossary</a></li>
+                                                                                        <li class="link" role="none"><a href="/blog/threats" id="cta-en-us-navbar-_blog_threats-click" tabindex="-1">Threat Center</a></li>
+                                                                                    </ul>
+                                                                            </div>
+                                                                    </div>
+                                                                <div class="submenu-box " role="menuitem">
+                                                                                                            <div class="submenu-content ">
+                                                                                <ul>
+                                                                                        <li role="none"><div class="title" role="none"><a href="/resources" target="_self" id="cta-en-us-navbar-_resources-business-click">Business Resources</a></div></li>
+                                                                                        <li class="link" role="none"><a href="/resources#reviews" id="cta-en-us-navbar-_resources_reviews-click" tabindex="-1">Reviews</a></li>
+                                                                                        <li class="link" role="none"><a href="/resources#analyst-reports" id="cta-en-us-navbar-_resources_analyst_reports-click" tabindex="-1">Analyst Reports</a></li>
+                                                                                        <li class="link" role="none"><a href="/resources/casestudies" id="cta-en-us-navbar-_resources_casestudies-click" tabindex="-1">Case Studies</a></li>
+                                                                                        <li role="none"><div class="title" role="none"><a href="https://press.malwarebytes.com/" id="cta-en-us-navbar-_press-news-click" target="_self">Press &amp; News</a></div></li>
+                                                                                    </ul>
+                                                                            </div>
+                                                                    </div>
+                                                                <div class="submenu-box " role="menuitem">
+                                                                                                            <div class="submenu-content ">
+                                                                                <ul>
+                                                                                        <li class="title" role="none">Events</li>
+                                                                                        <li role="none"><img src="/images/rsa2021.jpg" alt="RSA 2021" width="250" height="121" loading="lazy" /> <br /> <br />
+<p><span class="title"><a href="https://www.rsaconference.com/usa" id="cta-en-us-navbar-resources-_featured-event-click" target="_new" rel="nofollow">Featured Event:</a></span> RSA 2021</p></li>
+                                                                                        <li role="none"><a href="https://press.malwarebytes.com/category/events/" id="cta-navbar-resources-featured-rsa-en-text" class="bold-link" tabindex="-1">See Event <svg width="40" height="16" viewbox="0 0 40 16" xmlns="http://www.w3.org/2000/svg" class="text-arrow"> 
+<title>See event</title>
+<g id="Homepage9" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Homepage-mobile9" transform="translate(-19.000000, -1149.000000)" fill="#0D3ECC" stroke="#0D3ECC"> <g id="new-arrow9" transform="translate(0.000000, 774.000000)"> <g id="Mobile---30.-Promotional-content-component9"> <g> <g id="link-39" transform="translate(20.000000, 303.000000)"> <g id="Blue-arrow9" transform="translate(0.000000, 73.000000)"> <g id="blue-arrow99"> <path d="M37.1901823,6.65312103 L2.61139809,6.52123236 L8.23338976,1.22246833 C8.53019664,0.942959836 8.53019664,0.489315325 8.23338976,0.209806827 C7.93658287,-0.069935609 7.45575714,-0.069935609 7.15895532,0.209806827 L0.322590191,6.65312103 C0.127933827,6.78279445 0,6.99557324 0,7.23736994 C0,7.24104134 0.00108401327,7.24445015 0.00114479906,7.24812155 C0.00105362037,7.25596087 0.00340400428,7.26336096 0.00361675454,7.27120028 C0.0071423304,7.34122421 0.0216093486,7.40803984 0.0449510922,7.47138938 C0.058648157,7.51160289 0.0783427532,7.54788242 0.0997697444,7.58576132 C0.118967923,7.61793022 0.14024295,7.64838039 0.164263468,7.67725983 C0.185660067,7.70409589 0.196662295,7.7355964 0.222602631,7.76001669 L7.20915931,14.3448922 C7.35756276,14.4847634 7.55197091,14.5546966 7.74637907,14.5546966 C7.94078722,14.5546966 8.13519538,14.4847634 8.28359882,14.3448922 C8.5804057,14.0651498 8.5804057,13.6119683 8.28359882,13.3322307 L2.57677045,7.95350752 L37.1901823,7.95350752 C37.609665,7.95350752 38,7.67294749 38,7.27734832 C38,6.88174914 37.609665,6.65312103 37.1901823,6.65312103 Z" id="Path9" stroke-width="0.5" fill-rule="nonzero" transform="translate(19.000000, 7.277348) scale(-1, 1) translate(-19.000000, -7.277348) "></path> </g> </g> </g> </g> </g> </g> </g> </g> </svg></a></li>
+                                                                                    </ul>
+                                                                            </div>
+                                                                    </div>
+                                                            </div>
+                        </div>
+                                            </div>
+                                        
+                        <div class="navitem has-dropdown" data-submenu="support-nav" aria-haspopup="true">
+                                                <button class="navitem-btn" type="button">Support</button>
+                        <div class="submenu " id="support-main-nav">
+                            <div class="submenu-container submenu-container-full">
+                                                                <div class="submenu-box " role="menuitem">
+                                                                                                            <button type="button" data-submenu="support-nav" tabindex="-1" class="main-nav-item nav-back-link"><span class="back-arrow"></span>Support</button>
+                                                                        <div class="submenu-content ">
+                                                                                <ul>
+                                                                                        <li class="title" role="none">Technical Support</li>
+                                                                                        <li class="link" role="none"><a href="https://support.malwarebytes.com/hc/en-us" id="cta-en-us-navbar-support_malwarebytes_com_hc_en_us-click" tabindex="-1">Personal Support</a></li>
+                                                                                        <li class="link" role="none"><a href="https://service.malwarebytes.com" id="cta-en-us-navbar-service_malwarebytes_com-click" tabindex="-1">Business Support</a></li>
+                                                                                        <li class="link" role="none"><a href="/business/services" id="cta-en-us-navbar-_business_services-click" tabindex="-1">Premium Services</a></li>
+                                                                                        <li class="link" role="none"><a href="https://forums.malwarebytes.com/" id="cta-en-us-navbar-forums_malwarebytes_com_-click" tabindex="-1">Forums</a></li>
+                                                                                        <li class="link" role="none"><a href="/secure" id="cta-en-us-navbar-_secure-click" tabindex="-1">Vulnerability Disclosure</a></li>
+                                                                                    </ul>
+                                                                            </div>
+                                                                    </div>
+                                                                <div class="submenu-box divider" role="menuitem">
+                                                                                                            <div class="submenu-content submenu-gradient">
+                                                                                <ul>
+                                                                                        <li role="none"><a href="https://www.youtube.com/channel/UCB7JQhkZpiyvGPufW2RPBoQ" id="cta-navbar-support-support_services-en-test" class="bold-link link-height" tabindex="-1"> <svg xmlns="http://www.w3.org/2000/svg" width="28" height="24" viewbox="0 0 28 24" class="link-icon"> 
+<title>Watch Icon</title>
+<g fill="none" fill-rule="evenodd"> <path fill="#94E1AE" d="M0 14.406L27.188 15.217 27.188 19.072 0.812 19.072z" opacity=".358"></path> <path fill="#049587" fill-rule="nonzero" d="M26.783 0H1.217C.545 0 0 .545 0 1.217v17.45c0 .672.545 1.217 1.217 1.217h9.334v2.435H7.913c-.224 0-.406.182-.406.406 0 .224.182.405.406.405h12.174c.224 0 .406-.181.406-.405 0-.224-.182-.406-.406-.406h-2.638v-2.435h9.334c.672 0 1.217-.545 1.217-1.217V1.217C28 .545 27.455 0 26.783 0zM16.638 22.319h-5.276v-2.435h5.276v2.435zm10.55-3.652c0 .224-.181.405-.405.405H1.217c-.224 0-.405-.181-.405-.405v-3.45h26.376v3.45zm0-4.261H.812V1.217c0-.224.181-.405.405-.405h25.566c.224 0 .405.181.405.405v13.189z"></path> <path fill="#049587" fill-rule="nonzero" d="M12.783 17.45h2.029c.224 0 .405-.182.405-.407 0-.224-.181-.405-.405-.405h-2.03c-.224 0-.405.181-.405.405 0 .225.181.406.406.406z"></path> <g transform="translate(8.9 1.8)"> <circle cx="5.1" cy="5.9" r="5" fill="#D1EFE0"></circle> <path fill="#049587" fill-rule="nonzero" d="M3.898 8.15l3.395-1.924c.143-.08.143-.296 0-.377L3.898 3.926c-.134-.076-.298.024-.298.182v3.86c0 .157.164.257.298.181z"></path> </g> </g> </svg> Training for Personal Products </a></li>
+                                                                                        <li role="none"><a href="/business/academy" id="cta-navbar-support-training_for_business-en-test" class="bold-link" tabindex="-1"> <svg xmlns="http://www.w3.org/2000/svg" width="28" height="24" viewbox="0 0 28 24" class="link-icon"> 
+<title>Watch Icon</title>
+<g fill="none" fill-rule="evenodd"> <path fill="#EFCC6C" d="M0 14.406L27.188 15.217 27.188 19.072 0.812 19.072z" opacity=".4"></path> <path fill="#E87613" fill-rule="nonzero" d="M26.783 0H1.217C.545 0 0 .545 0 1.217v17.45c0 .672.545 1.217 1.217 1.217h9.334v2.435H7.913c-.224 0-.406.182-.406.406 0 .224.182.405.406.405h12.174c.224 0 .406-.181.406-.405 0-.224-.182-.406-.406-.406h-2.638v-2.435h9.334c.672 0 1.217-.545 1.217-1.217V1.217C28 .545 27.455 0 26.783 0zM16.638 22.319h-5.276v-2.435h5.276v2.435zm10.55-3.652c0 .224-.181.405-.405.405H1.217c-.224 0-.405-.181-.405-.405v-3.45h26.376v3.45zm0-4.261H.812V1.217c0-.224.181-.405.405-.405h25.566c.224 0 .405.181.405.405v13.189z"></path> <path fill="#E87613" fill-rule="nonzero" d="M12.783 17.45h2.029c.224 0 .405-.182.405-.407 0-.224-.181-.405-.405-.405h-2.03c-.224 0-.405.181-.405.405 0 .225.181.406.406.406z"></path> <g transform="translate(8.9 1.8)"> <circle cx="5.1" cy="5.9" r="5" fill="#EFCC6C" opacity=".4"></circle> <path fill="#E87613" fill-rule="nonzero" d="M3.898 8.15l3.395-1.924c.143-.08.143-.296 0-.377L3.898 3.926c-.134-.076-.298.024-.298.182v3.86c0 .157.164.257.298.181z"></path> </g> </g> </svg> Training for Business Products </a></li>
+                                                                                    </ul>
+                                                                            </div>
+                                                                    </div>
+                                                                <div class="submenu-box divider" role="menuitem">
+                                                                                                            <div class="submenu-content submenu-gradient">
+                                                                                <ul>
+                                                                                        <li class="title" role="none">Featured Content</li>
+                                                                                        <li role="none"><svg width="82" height="82" viewbox="0 0 82 82" version="1.1" xmlns="http://www.w3.org/2000/svg"> 
+<title>Privacy Logo</title>
+<g id="VPN-page_Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="VPN_1680" transform="translate(-1240.000000, -822.000000)"> <g id="Icon+-text" transform="translate(0.000000, 743.000000)"> <g id="Privacy" transform="translate(1240.000000, 79.000000)"> <g id="anonymous-(1)"> <g id="Log" transform="translate(0.000000, 20.000000)"> <rect id="Rectangle1" fill="#141519" x="16" y="14" width="40" height="4" rx="1.5"></rect> <circle id="Oval1" fill="#141519" cx="10" cy="16" r="3"></circle> <rect id="Rectangle2" fill="#141519" x="16" y="25" width="40" height="4" rx="1.5"></rect> <circle id="Oval2" fill="#141519" cx="10" cy="27" r="3"></circle> <rect id="Rectangle3" fill="#141519" x="16" y="34" width="40" height="4" rx="1.5"></rect> <circle id="Oval3" fill="#141519" cx="10" cy="36" r="3"></circle> <rect id="Rectangle4" fill="#141519" x="16" y="45" width="40" height="4" rx="1.5"></rect> <circle id="Oval4" fill="#141519" cx="10" cy="47" r="3"></circle> <rect id="Rectangle5" stroke="#141519" stroke-width="3" x="1.5" y="1.5" width="59" height="59" rx="6"></rect> </g> <path d="M79.3919609,0.099758858 C76.4801797,1.04946472 73.3428828,1.30514451 70.2191328,0.815369154 C68.9485156,0.616181407 67.632875,0.515188555 66.309,0.515188555 C65.5535625,0.515188555 64.7763437,0.59433071 63.9989922,0.750483246 C62.1034922,1.13100512 60.2483672,2.00370061 58.6342969,3.27410541 L48.8189219,10.9992591 C48.3380078,11.3777825 47.6619922,11.3777825 47.1809453,10.9992591 L37.3655703,3.27410541 C35.7515,2.00370061 33.896375,1.13100512 32.000875,0.750483246 C31.2235234,0.59433071 30.4464375,0.515188555 29.6908672,0.515188555 C28.3669922,0.515188555 27.0513516,0.616181407 25.7807344,0.815369154 C22.6573828,1.30514451 19.5196875,1.04933149 16.6079063,0.0996256221 C15.3208203,-0.320067626 14,0.63843181 14,1.99623939 L14,17.1317103 C14,21.0877521 18.4004766,24.7509414 24.7009688,26.0397328 C27.2754062,26.5668142 29.9737578,26.3327186 32.5042344,25.3634271 C33.1133125,25.1301309 33.7437734,24.9345405 34.3782188,24.7819854 C37.9200625,23.9307409 41.6825078,24.70724 44.7008047,26.9132277 C44.7042578,26.9158924 44.7079766,26.9184239 44.7103672,26.9202892 C46.6778516,28.3599036 49.3220156,28.3599036 51.2895,26.9202892 C54.3934609,24.6492824 58.2721172,23.8984978 61.9311016,24.8599284 C62.4585,24.9984938 62.9849687,25.1679699 63.4957656,25.3635603 C66.0262422,26.3325854 68.7247266,26.5666809 71.2988984,26.0397328 C77.5995234,24.7508082 82,21.0877521 82,17.1317103 L82,1.99623939 C82,0.63843181 80.6790469,-0.320067626 79.3919609,0.099758858 Z M38.8350078,15.7731033 C37.4044844,16.6918984 35.0169141,17.8935534 32.3129844,17.8935534 C29.6091875,17.8935534 27.2216172,16.6918984 25.7909609,15.7731033 C25.0411016,15.2914553 25.0411016,14.1962558 25.7909609,13.7146078 C27.2214844,12.7958127 29.6090547,11.5941576 32.3129844,11.5941576 C35.0167812,11.5941576 37.4044844,12.7958127 38.8350078,13.7146078 C39.5848672,14.1962558 39.5848672,15.2914553 38.8350078,15.7731033 Z M70.2089062,15.7731033 C68.7783828,16.6918984 66.3908125,17.8935534 63.6870156,17.8935534 C60.9832187,17.8935534 58.5955156,16.6918984 57.1649922,15.7731033 C56.4151328,15.2914553 56.4151328,14.1962558 57.1649922,13.7146078 C58.5955156,12.7958127 60.9830859,11.5941576 63.6870156,11.5941576 C66.3909453,11.5941576 68.7783828,12.7958127 70.2089062,13.7146078 C70.9587656,14.1962558 70.9587656,15.2914553 70.2089062,15.7731033 Z" id="Shape1" fill="#5AA8F5" fill-rule="nonzero"></path> </g> </g> </g> </g> </g> </svg> <br /> <br />
+<p>Activate Malwarebytes Privacy on Windows device.</p></li>
+                                                                                        <li role="none"><a href="https://support.malwarebytes.com/hc/en-us/articles/360046199873-Activate-Malwarebytes-Privacy-on-Windows-device" id="cta-navbar-support-privacy_activation-en-test" class="bold-link" tabindex="-1">See Content <svg width="40" height="16" viewbox="0 0 40 16" xmlns="http://www.w3.org/2000/svg" class="text-arrow"> 
+<title>See content</title>
+<g id="Homepage10" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Homepage-mobile10" transform="translate(-19.000000, -1149.000000)" fill="#0D3ECC" stroke="#0D3ECC"> <g id="new-arrow10" transform="translate(0.000000, 774.000000)"> <g id="Mobile---30.-Promotional-content-component10"> <g> <g id="link-310" transform="translate(20.000000, 303.000000)"> <g id="Blue-arrow10" transform="translate(0.000000, 73.000000)"> <g id="blue-arrow"> <path d="M37.1901823,6.65312103 L2.61139809,6.52123236 L8.23338976,1.22246833 C8.53019664,0.942959836 8.53019664,0.489315325 8.23338976,0.209806827 C7.93658287,-0.069935609 7.45575714,-0.069935609 7.15895532,0.209806827 L0.322590191,6.65312103 C0.127933827,6.78279445 0,6.99557324 0,7.23736994 C0,7.24104134 0.00108401327,7.24445015 0.00114479906,7.24812155 C0.00105362037,7.25596087 0.00340400428,7.26336096 0.00361675454,7.27120028 C0.0071423304,7.34122421 0.0216093486,7.40803984 0.0449510922,7.47138938 C0.058648157,7.51160289 0.0783427532,7.54788242 0.0997697444,7.58576132 C0.118967923,7.61793022 0.14024295,7.64838039 0.164263468,7.67725983 C0.185660067,7.70409589 0.196662295,7.7355964 0.222602631,7.76001669 L7.20915931,14.3448922 C7.35756276,14.4847634 7.55197091,14.5546966 7.74637907,14.5546966 C7.94078722,14.5546966 8.13519538,14.4847634 8.28359882,14.3448922 C8.5804057,14.0651498 8.5804057,13.6119683 8.28359882,13.3322307 L2.57677045,7.95350752 L37.1901823,7.95350752 C37.609665,7.95350752 38,7.67294749 38,7.27734832 C38,6.88174914 37.609665,6.65312103 37.1901823,6.65312103 Z" id="Path10" stroke-width="0.5" fill-rule="nonzero" transform="translate(19.000000, 7.277348) scale(-1, 1) translate(-19.000000, -7.277348) "></path> </g> </g> </g> </g> </g> </g> </g> </g> </svg></a></li>
+                                                                                    </ul>
+                                                                            </div>
+                                                                    </div>
+                                                            </div>
+                        </div>
+                                            </div>
+                                        
+                        <div class=" " data-submenu="free-download-nav" aria-haspopup="true">
+                                                <a id="cta-navbar-freedownload-main-en-test" href="javascript:void(0)" class="free-download nav-download-btn">FREE DOWNLOAD</a>
+                                                                    </div>
+                                    </div>
+                <div id="main-util-nav">
+                                        <div class="navitem-caps has-dropdown" data-submenu="contact-us-nav" tabindex="0">
+                                                <span>CONTACT US</span>
+                        <div id="contact-us-nav" class="submenu">
+                            <div class="submenu-container">
+                                <div class="submenu-box">
+                                    <button type="button" data-submenu="contact-us-nav"  tabindex="-1" class="main-nav-item nav-back-link"><span class="back-arrow"></span>CONTACT US</button>
+                                    <ul>
+                                                                                <li class="link" role="none"><a href="https://support.malwarebytes.com"   id="cta-en-us-utilbar-support_malwarebytes_com-click" tabindex="-1">Personal Support</a></li>
+                                                                                <li class="link" role="none"><a href="https://service.malwarebytes.com"   id="cta-en-us-utilbar-service_malwarebytes_com-click" tabindex="-1">Business Support</a></li>
+                                                                                <li class="link" role="none"><a href="/business/contact-us?ref=globalnav"   id="cta-en-us-utilbar-_business_contact_us_ref_globalnav-click" tabindex="-1">Talk to Sales</a></li>
+                                                                                <li class="link" role="none"><a href="https://press.malwarebytes.com"   id="cta-en-us-utilbar-press_malwarebytes_com-click" tabindex="-1">Contact Press</a></li>
+                                                                                <li class="link" role="none"><a href="/partners"   id="cta-en-us-utilbar-_partners-click" tabindex="-1">Partner Programs</a></li>
+                                                                                <li class="link" role="none"><a href="/secure"   id="cta-en-us-utilbar-_secure-click" tabindex="-1">Submit Vulnerability</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                        </div>
+                                            </div>
+                                        <div class="navitem-caps has-dropdown" data-submenu="company-nav" tabindex="0">
+                                                <span>COMPANY</span>
+                        <div id="company-nav" class="submenu">
+                            <div class="submenu-container">
+                                <div class="submenu-box">
+                                    <button type="button" data-submenu="company-nav"  tabindex="-1" class="main-nav-item nav-back-link"><span class="back-arrow"></span>COMPANY</button>
+                                    <ul>
+                                                                                <li class="link" role="none"><a href="/company"   id="cta-en-us-utilbar-_company-click" tabindex="-1">About Malwarebytes</a></li>
+                                                                                <li class="link" role="none"><a href="/jobs"   id="cta-en-us-utilbar-_jobs-click" tabindex="-1">Careers</a></li>
+                                                                                <li class="link" role="none"><a href="https://press.malwarebytes.com"   id="cta-en-us-utilbar-press_malwarebytes_com-click" tabindex="-1">News & Press</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                        </div>
+                                            </div>
+                                        <div class="navitem-caps has-dropdown" data-submenu="sign-in-nav" tabindex="0">
+                                                <span>SIGN IN</span>
+                        <div id="sign-in-nav" class="submenu">
+                            <div class="submenu-container">
+                                <div class="submenu-box">
+                                    <button type="button" data-submenu="sign-in-nav"  tabindex="-1" class="main-nav-item nav-back-link"><span class="back-arrow"></span>SIGN IN</button>
+                                    <ul>
+                                                                                <li class="link" role="none"><a href="https://my.malwarebytes.com/en/login" rel='nofollow'  id="cta-en-us-utilbar-my_malwarebytes_com_en_login-click" tabindex="-1"><strong>MyAccount:</strong> manage your personal/Teams subscription ></a></li>
+                                                                                <li class="link" role="none"><a href="https://cloud.malwarebytes.com" rel='nofollow'  id="cta-en-us-utilbar-cloud_malwarebytes_com-click" tabindex="-1"><strong>Cloud Console:</strong> manage your cloud business products ></a></li>
+                                                                                <li class="link" role="none"><a href="https://partners.malwarebytes.com/English" rel='nofollow'  id="cta-en-us-utilbar-partners_malwarebytes_com_English-click" tabindex="-1"><strong>Partner Portal:</strong> management for Resellers and MSPs ></a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                        </div>
+                                            </div>
+                                    </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="wrapper" id="post">
+        <div class="lightbox-cover"></div>
+        
+
+    <link rel="stylesheet" type="text/css" href="/css/slick.css">
+<link rel="stylesheet" type="text/css" href="/css/highlight.min.css">
+<script>
+var urlID = "blog";
+</script>
+
+    <div id="labs-sub-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xs-6" id="search-section">
+                <form id="search-form" onsubmit="submitSearchBlog(event)" method="get">
+                    <div class="searchbar-wrap-rightrail">
+                        <label for="cta-labs-rightrail-search-submit-en" aria-label="cta-labs-rightrail-search-submit-en" aria-labelledby="cta-labs-rightrail-search-submit-en">
+                            <input type="text" id="st-search-input-rightrail" class="st-search-input-rightrail"
+                            placeholder="Search Labs" />
+                        </label>
+                        <button type="submit" id="cta-labs-rightrail-search-submit-en" aria-label="Submit your search query">
+                            <svg class="svg-icon svg-stroke-mwb-blue svg-search">
+                                <use href="/images/component-project/templates/blog/blog-svg.svg#svg-search"></use>
+                            </svg>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-md-offset-4 col-md-4 col-xs-6" id="social">
+                <div class="left col-lg-6 col-md-8 col-sm-7">
+                    <a href="https://www.malwarebytes.com/newsletter?email=&source=labs"
+                        class="subscribe-btn">SUBSCRIBE</a>
+                    <a href="/blog/feed/index.xml" target="_blank" class="socicon-rss" aria-label="Subscribe to Malwarebytes Labs RSS Feed">
+                        <svg class="svg-icon svg-fill-blue svg-rss">
+                            <use href="/images/component-project/templates/blog/blog-svg.svg#svg-rss"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="right col-lg-5 col-md-4 col-sm-4 col-xs-9">
+                    <a class="social socicon-facebook" href="https://www.facebook.com/Malwarebytes/"
+                        id="social-follow-facebook" target="_blank" aria-label="Visit Malwarebytes on Facebook">
+                        <svg class="svg-icon svg-fill-dark-gray">
+                            <use href="/images/component-project/templates/navwrap/masterpage-svg.svg#svg-facebook"></use>
+                        </svg>
+                    </a>
+                    <a class="social socicon-twitter" href="https://twitter.com/malwarebytes" id="social-follow-twitter"
+                        target="_blank" aria-label="Visit Malwarebytes on Twitter">
+                        <svg class="svg-icon svg-fill-dark-gray">
+                            <use href="/images/component-project/templates/navwrap/masterpage-svg.svg#svg-twitter"></use>
+                        </svg>
+                    </a>
+                    <a class="social socicon-linkedin" href="https://www.linkedin.com/company/malwarebytes"
+                        id="social-follow-linkedin" target="_blank" aria-label="Visit Malwarebytes on LinkedIn">
+                        <svg class="svg-icon svg-fill-dark-gray">
+                            <use href="/images/component-project/templates/navwrap/masterpage-svg.svg#svg-linkedin"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<article id="single-post" class="h-entry">
+    <section>
+        <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://google.com/article"
+  },
+  "headline": "Woody RAT: A new feature-rich malware spotted in the wild",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://www.malwarebytes.com/blog/images/uploads/2022/05/photodune-5107985-demonic-mutant-rat-l-copy-627x640-627x506.jpg",
+    "height": 405,
+    "width": 720
+  },
+  "datePublished": "August 3, 2022",
+  "dateModified": "August 3, 2022",
+  "author": {
+    "@type": "Person",
+    "name": "/blog/authors/threatintelligence"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Malwarebytes",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.malwarebytes.com/images/mb-logo-2.png",
+      "width": 600,
+      "height": 60
+    }
+  },
+  "description": "The Malwarebytes Threat Intelligence team has discovered a new Remote Access Trojan that we dubbed Woody Rat used to target Russian entities."
+}   
+        </script>
+        <script type='text/javascript' id='disqus_embed-js-extra'>
+            /* <![CDATA[ */
+            var embedVars = {
+                "disqusConfig": {
+                    //"integration": "wordpress 3.0.21"
+                },
+                "disqusIdentifier": "58182 https://blog.malwarebytes.com/?p=58182",
+                "disqusShortname": "malwarebytesunpacked",
+                "disqusTitle": "Woody RAT: A new feature-rich malware spotted in the wild",
+                "disqusUrl": "https://www.malwarebytes.com/blog/threat-intelligence/2022/08/woody-rat-a-new-feature-rich-malware-spotted-in-the-wild",
+                "postId": "58182"
+            };
+/* ]]> */
+        </script>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8" id="content">
+                    <div>
+                                                <!-- 
+                        thumbnail_optimized_736x413=    /blog/threat-intelligence/2022/08/asset_upload_file18830_233242.jpg                            -->
+                        <p>
+                            <img width="736" height="413" src="/blog/threat-intelligence/2022/08/asset_upload_file18830_233242.jpg" alt="Woody RAT: A new feature-rich malware spotted in the wild"/>                        </p>
+                                                <p class="breadcrumbs hidden-xs">
+                                                        <a href="/blog/category/threat-intelligence" rel="category tag">Threat Intelligence</a>
+                             |                                                         <a href="/blog/category/news" rel="category tag">Articles</a>
+                                                                                </p>
+                        <h1 class="entry-title p-name">Woody RAT: A new feature-rich malware spotted in the wild</h1>
+                        <p class="small">
+                            Posted: <span class="published"><time class="dt-published" datetime="August 3, 2022">August 3, 2022</time></span>
+                                                        by <span class="vcard author p-author h-card"><a href="/blog/authors/threatintelligence" title="Posts by Threat Intelligence Team" rel="author">Threat Intelligence Team</a></span>
+                                                                                </p>
+                        <div class="entry-summary p-summary" style="display: none;">The Malwarebytes Threat Intelligence team has discovered a new Remote Access Trojan that we dubbed Woody Rat used to target Russian entities.</div>
+                        <div class="post-content entry-content e-content" id="articleBody" itemprop="articleBody">
+                            <p><em>This blog post was authored by Ankur Saini and Hossein Jazi</em></p>
+<p>The Malwarebytes Threat Intelligence team has identified a new Remote Access Trojan we are calling Woody Rat that has been in the wild for at least one year.</p>
+<p>This advanced custom Rat is mainly the work of a threat actor that targets Russian entities by using lures in archive file format and more recently Office documents leveraging the Follina vulnerability.</p>
+<p>Based on a fake domain registered by the threat actors, we know that they tried to target a Russian aerospace and defense entity known as <a href="https://en.wikipedia.org/wiki/United_Aircraft_Corporation" target="_blank" rel="noreferrer noopener">OAK</a>.</p>
+<p>In this blog post, we will analyze Woody Rat's distribution methods, capabilities as well as communication protocol.</p>
+<h2>Distribution methods</h2>
+<p>Based on our knowledge, Woody Rat has been distributed using two different formats: archive files and Office documents using the Follina vulnerability.</p>
+<p>The earliest versions of this Rat was typically archived into a zip file pretending to be a document specific to a Russian group. When the Follina vulnerability became known to the world, the threat actor switched to it to distribute the payload, as identified by <a href="https://twitter.com/malwrhunterteam/status/1534184385313923072">@MalwareHunterTeam</a>.</p>
+<p>The following diagram shows the overall attack flow used by the threat actor to drop Woody Rat:</p>
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><a href="/blog/images/uploads/2022/08/figure1.png"><img width="1078" height="915" src="/blog/images/uploads/2022/08/figure1.png" alt="" class="wp-image-58965"/></a>
+<figcaption>Woody Rat distribution methods</figcaption>
+</figure>
+</div>
+<p><strong>Archive files</strong></p>
+<p>In this method, Woody Rat is packaged into an archive file and sent to victims. We believe that these archive files have been distributed using spear phishing emails. Here are some examples of these archive files:</p>
+<ul>
+<li><em>anketa_brozhik.doc.zip</em>: It contains Woody Rat with the same name: <em>Anketa_Brozhik.doc.exe</em>.</li>
+<li><em>zayavka.zip</em>: It contains Woody Rat pretending to be an application (application for participation in the <em>selection.doc.exe</em>).</li>
+</ul>
+<p><strong>Follina vulnerability</strong></p>
+<p>The threat actor is using a Microsoft Office document (<em>Памятка.docx</em>) that has weaponized with the Follina (CVE-2022-30190) vulnerability to drop Woody Rat. The used lure is in Russian is called "<em>Information security memo</em>" which provide security practices for passwords, confidential information, etc.</p>
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><a href="/blog/images/uploads/2022/08/figure2.png"><img width="2048" height="1349" src="/blog/images/uploads/2022/08/figure2.png" alt="" class="wp-image-58966"/></a>
+<figcaption>Document lure</figcaption>
+</figure>
+</div>
+<h2>Woody Rat Analysis</h2>
+<p>The threat actor has left some debugging information including a pdb path from which we derived and picked a name for this new Rat:</p>
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><a href="/blog/images/uploads/2022/08/figure3.png"><img width="600" height="303" src="/blog/images/uploads/2022/08/figure3-600x303.png" alt="" class="wp-image-58967"/></a>
+<figcaption>Debug Information</figcaption>
+</figure>
+</div>
+<p>A lot of CRT functions seem to be statically linked, which leads to IDA generating a lot of noise and hindering analysis. Before initialization, the malware effectively suppresses all error reporting by calling SetErrorMode with 0x8007 as parameter.</p>
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><a href="/blog/images/uploads/2022/08/figure4.png"><img width="600" height="142" src="/blog/images/uploads/2022/08/figure4-600x142.png" alt="" class="wp-image-58968"/></a>
+<figcaption>main function</figcaption>
+</figure>
+</div>
+<p>As we will see later, that malware uses multiple threads and so it allocates a global object and assigns a mutex to it to make sure no two clashing operations can take place at the same time. This object enforces that only one thread is reaching out to the C2 at a given time and that there are no pending requests before making another request.</p>
+<h3>Deriving the Cookie</h3>
+<p>The malware communicates with its C2 using HTTP requests. To uniquely identify each infected machine, the malware derives a cookie from machine specific values. The values are taken from the adapter information, computer name and volume information, and 8 random bytes are appended to this value to avoid any possible cookie collisions by the malware.</p>
+<p>A combination of <em>GetAdaptersInfo</em>, <em>GetComputerNameA</em> and <em>GetVolumeInformationW</em> functions are used to retrieve the required data to generate the cookie. This cookie is sent with every HTTP request that is made to the C2.</p>
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><a href="/blog/images/uploads/2022/08/figure5.png"><img width="1796" height="1070" src="/blog/images/uploads/2022/08/figure5.png" alt="" class="wp-image-58969"/></a>
+<figcaption>get_cookie_data function</figcaption>
+</figure>
+</div>
+<h3>Data encryption with HTTP requests</h3>
+<p>To evade network-based monitoring the malware uses a combination of RSA-4096 and AES-CBC to encrypt the data sent to the C2. The public key used for RSA-4096 is embedded inside the binary and the malware formulates the RSA public key blob at runtime using the embedded data and imports it using the <em>BCryptImportKeyPair</em> function.</p>
+<p>The malware derives the key for AES-CBC at runtime by generating 32 random bytes; these 32 bytes are then encrypted with RSA-4096 and sent to the C2. Both the malware and C2 simultaneously use these bytes to generate the AES-CBC key using <em>BCryptGenerateSymmetricKey</em> which is used in subsequent HTTP requests to encrypt and decrypt the data. For encryption and decryption the malware uses <em>BCryptEncrypt</em> and <em>BCryptDecrypt</em> respectively.</p>
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><a href="/blog/images/uploads/2022/08/figure6.png"><img width="1536" height="1542" src="/blog/images/uploads/2022/08/figure6.png" alt="" class="wp-image-58970"/></a>
+<figcaption>RSA Encryption routine</figcaption>
+</figure>
+</div>
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><a href="/blog/images/uploads/2022/08/figure7.png"><img width="1700" height="1124" src="/blog/images/uploads/2022/08/figure7.png" alt="" class="wp-image-58971"/></a>
+<figcaption>AES Encryption Routine</figcaption>
+</figure>
+</div>
+<h3>C2 HTTP endpoint request</h3>
+<p><strong>knock</strong> - This is the first HTTP request that the malware makes to the C2. The machine-specific cookie is sent as part of the headers here. This is a POST request and the data of this request contains 32 random bytes which are used to derive AES-CBC key, while the 32 bytes are RSA-4096 encrypted.</p>
+<p>The data received as response for this request is decrypted and it contains the url path to submit (/submit) the additional machine information which the malware generates after this operation.</p>
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><a href="/blog/images/uploads/2022/08/figure8.png"><img width="600" height="352" src="/blog/images/uploads/2022/08/figure8-600x352.png" alt="" class="wp-image-58972"/></a>
+<figcaption>knock request headers</figcaption>
+</figure>
+</div>
+<p><strong>submit </strong>- This endpoint request is used to submit information about the infected machine. The data sent to the C2 is AES-CBC encrypted. <a href="https://gist.github.com/kernelm0de/fd018d58ebe78f603a13b2eba7f01917" target="_blank" rel="noreferrer noopener">Data</a> sent via submit API includes:</p>
+<ul>
+<li>OS</li>
+<li>Architecture</li>
+<li>Antivirus installed</li>
+<li>Computer Name</li>
+<li>OS Build Version</li>
+<li>.NET information</li>
+<li>PowerShell information</li>
+<li>Python information (Install path, version etc.)</li>
+<li>Storage drives - includes Drive path, Internal name etc.</li>
+<li>Environment Variables</li>
+<li>Network Interfaces</li>
+<li>Administrator privileges</li>
+<li>List of running processes</li>
+<li>Proxy information</li>
+<li>Username</li>
+<li>List of all the User accounts</li>
+</ul>
+<p>The malware currently detects 6 AVs through Registry Keys; these AVs being Avast Software, Doctor Web, Kaspersky, AVG, ESET and Sophos.</p>
+<p><strong>ping</strong> - The malware makes a ping GET http request to the C2 at regular intervals. If the C2 responds with "_CRY" then the malware proceeds to send the knock request again but if the C2 responds with "_ACK" the response contains additional information about which command should be executed by the malware.</p>
+<p>The malware supports a wide variety of commands which are classified into _SET and _REQ requests as seen while analyzing the malware. We will dive into all these commands below in the blog.</p>
+<h3>C2 Commands</h3>
+<p>The malware uses a specific thread to communicate with the C2 and a different one to execute the commands received from the C2. To synchronize between both threads, the malware leverages events and mutex. To dispatch a command it modifies the state of the event linked to that object. We should note all the communications involved in these commands are AES encrypted.</p>
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><a href="/blog/images/uploads/2022/08/figure9.png"><img width="600" height="117" src="/blog/images/uploads/2022/08/figure9-600x117.png" alt="" class="wp-image-58973"/></a>
+<figcaption>Command execution routine</figcaption>
+</figure>
+</div>
+<p><strong>_SET Commands</strong></p>
+<ul>
+<li><strong>PING</strong> - This command is used to set the sleep interval between every ping request to the C2.</li>
+<li><strong>PURG</strong> - Unknown command</li>
+<li><strong>EXIT</strong> - Exit the command execution thread.</li>
+</ul>
+<p><strong>_REQ Commands</strong></p>
+<ul>
+<li><strong>EXEC</strong> (Execute)- Executes the command received from the C2 by creating a cmd.exe process, the malware creates two named pipes and redirects the input and output to these pipes. The output of the command is read using <em>ReadFile</em> from the named pipe and then "_DAT" is appended to this data before it is AES encrypted and sent to the C2.</li>
+</ul>
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><a href="/blog/images/uploads/2022/08/figure10.png"><img width="1822" height="1026" src="/blog/images/uploads/2022/08/figure10.png" alt="" class="wp-image-58974"/></a>
+<figcaption>EXEC command</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>UPLD</strong> (Upload) - The Upload command is used to remotely upload a file to the infected machine. The malware makes a GET request to the C2 and receives data to be written as file.</li>
+<li><strong>INFO</strong> (Submit Information) - The INFO command is similar to the "submit" request above; this command sends the exact information to the C2 as sent by the "submit" request.</li>
+</ul>
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img width="600" height="190" src="/blog/images/uploads/2022/08/figure11.png" alt="" class="wp-image-58975"/>
+<figcaption>INFO command</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>UPEX</strong> (Upload and Execute) - This is a combination of UPLD and EXEC command. The commands first writes a file received from the C2 and then executes that file.</li>
+<li><strong>DNLD</strong> (Download) - The DNLD command allows the C2 to retrieve any file from the infected machine. The malware encrypts the requested file and sends the data via a POST request to the C2.</li>
+<li><strong>PROC</strong> (Execute Process) - The PROC command is similar to the EXEC command with slight differences, here the process is directly executed instead of executing it with cmd.exe as in EXEC command. The command uses the named pipes in similar fashion as used by the EXEC command.</li>
+<li><strong>UPPR</strong> (Upload and Execute Process) - This is a combination of UPLD and PROC command. The command receives the remote file using the upload command then executes the file using PROC command.</li>
+<li><strong>SDEL</strong> (Delete File) - This is used to delete any file on the infected system. It also seems to overwrite the first few bytes of the file to be deleted with random data.</li>
+<li><strong>_DIR</strong> (List directory) - This can list all the files and their attributes in a directory supplied as argument. If no directory is supplied, then it proceeds to list the current directory. File attributes retrieved by this command are:
+<ul>
+<li>Filename</li>
+<li>Type (Directory, Unknown, File)</li>
+<li>Owner</li>
+<li>Creation time</li>
+<li>Last access time</li>
+<li>Last write time</li>
+<li>Size</li>
+<li>Permissions</li>
+</ul>
+</li>
+<li><strong>STCK</strong> (Command Stack) - This allows the attacker to execute multiple commands with one request. The malware can receive a STCK command which can have multiple children commands which are executed in the same order they are received by the malware.</li>
+<li><strong>SCRN</strong> (Screenshot) - This command leverages Windows GDI+ to take the screenshot of the desktop. The image is then encrypted using AES-CBC and sent to the C2.</li>
+<li><strong>INJC</strong> (Process Injection) - The malware seems to generate a new AES key for this command. The code to be injected is received from the C2 and decrypted. To inject the code into the target process it writes it to the remote memory using WriteProcessMemory and then creates a remote thread using CreateRemoteThread.</li>
+</ul>
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><a href="/blog/images/uploads/2022/08/figure12.png"><img width="600" height="88" src="/blog/images/uploads/2022/08/figure12-600x88.png" alt="" class="wp-image-58976"/></a>
+<figcaption>INJC routine</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>PSLS</strong> (Process List) - Calls <em>NtQuerySystemInformation</em> with <em>SystemProcessInformation</em> to retrieve an array containing all the running processes. Information sent about each process to the C2:
+<ul>
+<li>PID</li>
+<li>ParentPID</li>
+<li>Image Name</li>
+<li>Owner</li>
+</ul>
+</li>
+<li><strong>DMON</strong> (Creates Process) - The command seems similar to PROC with the only difference being the output of the process execution is not sent back to the C2. It receives the process name from the C2 and executes it using CreateProcess.</li>
+<li><strong>UPDM</strong> (Upload and Create Process) - Allows the C2 and upload a file and then execute it using DMON command.</li>
+</ul>
+<p><strong>SharpExecutor and PowerSession Commands</strong></p>
+<p>Interestingly, the malware has 2 .NET DLLs embedded inside. These DLLs are named <em>WoodySharpExecutor</em> and <em>WoodyPowerSession</em> respectively. <em>WoodySharpExecutor</em> provides the malware ability to run .NET code received from the C2. <em>WoodyPowerSession</em> on the other hand allows the malware to execute PowerShell commands and scripts received from the C2.</p>
+<p><em>WoodyPowerSession</em> makes use of pipelines to execute these PS commands. The .NET dlls are loaded by the malware and commands are executed via the methods present in these DLLs:</p>
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><a href="/blog/images/uploads/2022/08/figure13.png"><img width="492" height="600" src="/blog/images/uploads/2022/08/figure13-492x600.png" alt="" class="wp-image-58977"/></a>
+<figcaption>SharpExecutor and PowerSession methods</figcaption>
+</figure>
+</div>
+<p>We will look at the commands utilising these DLLs below:</p>
+<ul>
+<li><strong>DN_B</strong> (DotNet Binary) - This command makes use of the RunBinaryStdout method to execute Assembly code with arguments received from the C2. The code is received as an array of Base64 strings separated by 0x20 character.</li>
+<li><strong>DN_D</strong> (DotNet DLL) - This method provides the attacker a lot more control over the execution. An attacker can choose whether to send the console output back to the C2 or not. The method receives an array of Base64 strings consisting of code, class name, method name and arguments. The DLL loads the code and finds and executes the method based on other arguments received from the C2.</li>
+<li><strong>PSSC</strong> (PowerSession Shell Command) - Allows the malware to receive a Base64 encoded PowerShell command and execute it.</li>
+<li><strong>PSSS</strong> (PowerSession Shell Script) - This command allows the malware to load and execute a Base64 encoded PowerShell script received from the C2.</li>
+<li><strong>PSSM</strong> (PowerSession Shell Module) - This command receives an array of Base64 encoded strings, one of which contains the module contents and the other one contains the module name. These strings are decoded and this module is imported to the command pipeline and then invoked.</li>
+</ul>
+<h3>Malware Cleanup</h3>
+<p>After creating the command threads, the malware deletes itself from disk. It uses the more commonly known <em>ProcessHollowing</em> technique to do so. It creates a suspended notepad process and then writes shellcode to delete a file into the suspended process using <em>NtWriteVirtualMemory</em>. The entry point of the thread is set by using the <em>NtSetContextThread</em> method and then the thread is resumed. This leads to the deletion of the malware from disk.</p>
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><a href="/blog/images/uploads/2022/08/figure14.png"><img width="1568" height="366" src="/blog/images/uploads/2022/08/figure14.png" alt="" class="wp-image-58978"/></a>
+<figcaption>Malware deletes itself</figcaption>
+</figure>
+</div>
+<h2>Unknown threat actor</h2>
+<p>This very capable Rat falls into the category of unknown threat actors we track. Historically, Chinese APTs such as Tonto team as well as North Korea with Konni have targeted Russia. However, based on what we were able to collect, there weren't any solid indicators to attribute this campaign to a specific threat actor.</p>
+<p>Malwarebytes blocks the Follina exploit that is being leveraged in the latest Woody Rat campaign. We also already detected the binary payloads via our heuristic malware engines.</p>
+<figure class="wp-block-image size-full"><img width="715" height="569" src="/blog/images/uploads/2022/08/block.png" alt="" class="wp-image-58964"/></figure>
+<h2>IOCs</h2>
+<p><strong>Woody</strong><strong>Rat</strong>:</p>
+<ul>
+<li>982ec24b5599373b65d7fec3b7b66e6afff4872847791cf3c5688f47bfcb8bf0</li>
+<li>66378c18e9da070629a2dbbf39e5277e539e043b2b912cc3fed0209c48215d0b</li>
+<li>b65bc098b475996eaabbb02bb5fee19a18c6ff2eee0062353aff696356e73b7a</li>
+<li>43b15071268f757027cf27dd94675fdd8e771cdcd77df6d2530cb8e218acc2ce</li>
+<li>408f314b0a76a0d41c99db0cb957d10ea8367700c757b0160ea925d6d7b5dd8e</li>
+<li>0588c52582aad248cf0c43aa44a33980e3485f0621dba30445d8da45bba4f834</li>
+<li>5c5020ee0f7a5b78a6da74a3f58710cba62f727959f8ece795b0f47828e33e80</li>
+<li>3ba32825177d7c2aac957ff1fc5e78b64279aeb748790bc90634e792541de8d3</li>
+<li>9bc071fb6a1d9e72c50aec88b4317c3eb7c0f5ff5906b00aa00d9e720cbc828d</li>
+</ul>
+<p><strong>C2s:</strong></p>
+<ul>
+<li>kurmakata.duckdns[.]org</li>
+<li>microsoft-ru-data[.]ru</li>
+<li>194.36.189.179</li>
+<li>microsoft-telemetry[.]ru</li>
+<li>oakrussia[.]ru</li>
+</ul>
+<p><strong>Follina Doc:</strong><br/>Памятка.docx<br/>ffa22c40ac69750b229654c54919a480b33bc41f68c128f5e3b5967d442728fb<br/><strong>Follina html file:</strong><br/>garmandesar.duckdns[.]org:444/uoqiuwef.html<br/><strong>Woody Rat url:</strong><br/>fcloud.nciinform[.]ru/main.css&nbsp;(edited)&nbsp;</p>                        </div>
+                        <div class="share-section">
+                            <p><b>SHARE THIS ARTICLE</b></p>
+                            <a class="socicon-facebook" target="_blank" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.malwarebytes.com%2fblog%2fthreat-intelligence%2f2022%2f08%2fwoody-rat-a-new-feature-rich-malware-spotted-in-the-wild" id="social-share-facebook" aria-label="Share this post on Facebook">
+                                <svg class="svg-icon svg-fill-gray">
+                                    <use href="/images/component-project/templates/navwrap/masterpage-svg.svg#svg-facebook"></use>
+                                </svg>
+                            </a>
+                            <a class="socicon-twitter" target="_blank" href="https://twitter.com/intent/tweet?text=Woody+RAT%3a+A+new+feature-rich+malware+spotted+in+the+wild+https%3a%2f%2fwww.malwarebytes.com%2fblog%2fthreat-intelligence%2f2022%2f08%2fwoody-rat-a-new-feature-rich-malware-spotted-in-the-wild&via=Malwarebytes" id="social-share-twitter" aria-label="Share this post on Twitter">
+                                <svg class="svg-icon svg-fill-gray">
+                                    <use href="/images/component-project/templates/navwrap/masterpage-svg.svg#svg-twitter"></use>
+                                </svg>
+                            </a>
+                            <a class="socicon-linkedin" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.malwarebytes.com%2fblog%2fthreat-intelligence%2f2022%2f08%2fwoody-rat-a-new-feature-rich-malware-spotted-in-the-wild&summary=&source=" id="social-share-linkedin" aria-label="Share this post on LinkedIn">
+                                <svg class="svg-icon svg-fill-gray">
+                                    <use href="/images/component-project/templates/navwrap/masterpage-svg.svg#svg-linkedin"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        <hr/>
+                        <div class="comments-section">
+                            <p><b>COMMENTS</b></p>
+                            <div id="disqus_thread"></div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="related-articles">
+                        <p><b>RELATED ARTICLES</b></p>
+                    </div>
+                    <div class="blog_related_results" data-excludeid="228442" data-rows="5" data-pagination="false" data-category="" data-tags="APT,rat,russia"></div>
+                </div>
+                <div class="col-md-4" id="right-rail">
+                    <hr class="visible-xs visible-sm"/>
+                                        <!-- AUTHOR MODULE -->
+                    <div class="right-rail-section author-info">
+                        <p><b>ABOUT THE AUTHOR</b></p>
+                        <div class="small-card">
+                            <img alt='author' src='https://secure.gravatar.com/avatar/147cd7280d6ece931e4488a3a10809d9?s=300&d=identicon&r=g' srcset='https://secure.gravatar.com/avatar/147cd7280d6ece931e4488a3a10809d9?s=300&d=identicon&r=g 2x' class='avatar avatar-96 photo' height='96' width='96' loading='lazy'/>
+                            <div class="content">
+                                <p class="details">
+                                    <span class="name"><a href="/blog/authors/threatintelligence" title="Posts by Threat Intelligence Team" rel="author">Threat Intelligence Team</a></span>
+                                    <span class="author-twitter">
+                                        <svg class="svg-icon svg-fill-twitter-blue">
+                                            <use href="/images/component-project/templates/navwrap/masterpage-svg.svg#svg-twitter"></use>
+                                        </svg>
+                                    </span>
+                                    <br/>
+                                    <span class="title"></span>
+                                </p>
+                                <p class="desc"></p>
+                            </div>
+                        </div>
+                    </div>
+                                        <!-- SUB CATEGORIES -->
+                    <!-- TOP THREATS -->
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+    <section id="labs-links">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+      <div class="lablink">
+        <p><a href="/blog/authors">
+            <svg class="svg-icon svg-labs-link">
+                <use href="/images/component-project/templates/blog/blog-svg.svg#svg-contributors"></use>
+            </svg>
+            <br>
+            Contributors</a></p>
+      </div>
+      <div class="lablink">
+        <p><a href="/blog/threats">
+            <svg class="svg-icon svg-labs-link">
+                <use href="/images/component-project/templates/blog/blog-svg.svg#svg-threat-center"></use>
+            </svg>
+            <br>
+            Threat Center</a></p>
+      </div>
+
+      <div class="lablink">
+        <p><a href="/blog/podcast">
+            <svg class="svg-icon svg-labs-link">
+                <use href="/images/component-project/templates/blog/blog-svg.svg#svg-podcast"></use>
+            </svg>
+            <br>
+            Podcast</a></p>
+      </div>
+
+      <div class="lablink">
+        <p><a href="/glossary">
+            <svg class="svg-icon svg-labs-link">
+                <use href="/images/component-project/templates/blog/blog-svg.svg#svg-glossary"></use>
+            </svg>
+            <br>
+            Glossary</a></p>
+      </div>
+
+      <div class="lablink">
+        <p><a href="/blog/tech-support-scams">
+            <svg class="svg-icon svg-labs-link">
+                <use href="/images/component-project/templates/blog/blog-svg.svg#svg-scams"></use>
+            </svg>
+            <br>
+            Scams</a></p>
+      </div>
+
+      <div class="lablink">
+        <p><a href="/blog/write">
+            <svg class="svg-icon svg-labs-link">
+                <use href="/images/component-project/templates/blog/blog-svg.svg#svg-write"></use>
+            </svg>
+            <br>
+            Write for Labs</a></p>
+      </div>
+</div>
+    </div>
+  </div>
+</section>
+
+    <script type="text/plain" class="optanon-category-3">
+  var embeds = document.getElementsByClassName('embedded-video');
+  var alts = document.getElementsByClassName('embedded-video-alt');
+  if(embeds && alts) {
+    for(var i = 0; i < embeds.length; i++) {
+      embeds[i].src = embeds[i].dataset.src;
+      embeds[i].style.display = 'inline-block';
+    }
+
+    for(var i = 0; i < alts.length; i++) {
+      alts[i].style.display = 'none';
+    }
+  }
+</script>
+
+<script type="text/javascript">
+    setTimeout(function() {
+        var alts = document.getElementsByClassName('embedded-video-alt');
+        for( i = 0; i < alts.length; i++) {
+            alts[i].style.background = "none";
+        }
+    }, 2500);
+</script>
+
+<script type="text/javascript">  
+  $("link[href*='https://c.disquscdn.com/next/embed/lounge.bundle'], link[href*='https://c.disquscdn.com/next/embed/common.bundle']").each(function() {
+    /**/
+  });
+  
+</script>
+
+<script type='text/javascript' id='disqus_count-js-extra'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"malwarebytesunpacked"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/blog/js/comment_count.js?ver=3.0.21' id='disqus_count-js'></script>
+<script type='text/javascript' src='/blog/js/comment_embed.js?ver=3.0.21' id='disqus_embed-js'></script>
+<script type='text/javascript' src='/blog/js/imagesloaded.min.js?ver=4.1.4' id='imagesloaded-js'></script>
+<script type='text/javascript' src='/blog/js/masonry.min.js?ver=4.2.2' id='masonry-js'></script>
+<script type='text/javascript' src='/blog/js/jquery.masonry.min.js?ver=3.1.2b' id='jquery-masonry-js'></script>
+<script type='text/javascript' src='/blog/js/functions.js?ver=2013-07-18' id='mb_labs-script-js'></script>
+<script type='text/javascript' src='/blog/js/labs-nav.js?ver=3.0.21' id='disqus_count-js'></script>
+<script type='text/javascript' src='/js/slick.min.js'></script>
+<script type='text/javascript' src='/js/highlight.min.js'></script>
+<script type="text/javascript">  
+ hljs.highlightAll();
+</script>
+<script type="text/javascript">
+  var countryError, country;
+  $.browser = {};
+  (function() {
+    $.browser.msie = false;
+    $.browser.version = 0;
+    if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+      $.browser.msie = true;
+      $.browser.version = RegExp.$1;
+    }
+  })();
+  // Use Microsoft XDR for IE8/9
+  if ($.browser.msie && window.XDomainRequest && $.browser.version < 10) {
+    //console.log("browser is IE less than 10");
+
+    var xdr = new XDomainRequest();
+    xdr.open("GET", "https://genesis.malwarebytes.com/api/v1/wai.gif");
+    xdr.onload = function() {
+      //console.log("onload function");
+      // use xdr.responseText for ie8/9, since unable to specify JSON accept request header
+      var dom = new ActiveXObject("Microsoft.XMLDOM");
+      var data = $.parseJSON(xdr.responseText);
+      //console.log("IE data: " + data);
+      dom.async = false;
+      if (data == null || typeof(data) == "undefined") {
+        // console.log("data is null or undefined");
+        window.countryError = data["error"]["errorCode"];
+      }
+      window.country = data["location"]["countryCode"];
+      //console.log("IE country in geo: " + country);
+    };
+    // function to call when an error occurs
+    xdr.onerror = function() {
+      //console.log("onerror XDR");
+      window.countryError = data["error"]["errorCode"];
+    };
+    //console.log("before the send");
+    xdr.send();
+    //console.log("after the function");
+  } else { // not IE 8/9, so use AJAX
+    $.ajax({
+      url: "https://genesis.malwarebytes.com/api/v1/wai.gif",
+      type: "GET",
+      crossDomain: true,
+      dataType: "json",
+      success: function(data) {
+        //set country     
+        //console.log("in success" + JSON.stringify(data));
+        window.country = data["location"]["countryCode"];
+      },
+      error: function(data, jqXHR, textStatus, errorThrown) {
+        //      console.log('geohtml genesis error POST1: ' + JSON.stringify(data)); 
+        //      console.log("jqXHR: " + jqXHR);
+        //      console.log("textStatus: " + textStatus);
+        //      console.log("errorThrown: " + errorThrown);
+        window.countryError = data["error"]["errorCode"];
+      },
+      async: false
+    });
+  }
+</script>
+
+<script type="text/plain" class="optanon-category-4">
+  $("script[src='https://malwarebytesunpacked.disqus.com/embed.js']").each(function() {
+    var scriptSrc = $(this).attr("src");
+    var newScript = "<script type='text/javascript' async='' src='" + scriptSrc + "'>";
+    $(this).before(newScript).remove();
+  });
+</script>
+
+
+    </div>
+    
+<!-- Footer -->
+     
+    <footer class="refresh-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 footer-logo-col">
+            <div class="footer-logo hidden-xs hidden-sm">
+                        <svg width="160px" height="25px" viewBox="0 0 160 25" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Footer-desktop" transform="translate(-165.000000, -68.000000)" fill="#FFFFFF">
+                                    <g id="Footer">
+                                        <g id="Group-3">
+                                            <g transform="translate(165.000000, 68.000000)">
+                                                <g id="logo">
+                                                    <path
+                                                        d="M104.620758,6.81492418 L104.53414,6.84800885 L104.53414,0.579460088 C104.53414,0.43037976 104.412794,0.314384104 104.256721,0.347468775 L102.436133,0.61294337 C102.314787,0.61294337 102.245333,0.728939026 102.245333,0.844934683 L102.245333,19.1016943 C102.245333,19.21769 102.33235,19.3340842 102.436133,19.3340842 C104.01363,19.6820712 105.99069,19.8315502 107.221712,19.8315502 C112.440783,19.8315502 113.151295,17.4434746 113.151295,14.840548 L113.151295,10.0313123 C113.151295,7.27890681 111.7642,5.86981868 109.076628,5.86981868 C107.135093,5.86981868 105.52247,6.36728459 104.620758,6.81492418 M110.827761,9.96514299 L110.827761,14.923459 C110.827761,16.7805854 110.238195,17.9078559 107.394949,17.9078559 C106.441346,17.9078559 105.504907,17.8249449 104.586031,17.7256909 L104.551304,17.7256909 L104.551304,8.85421552 L104.586031,8.85421552 C105.418288,8.47274526 107.152257,7.82580042 108.504625,7.82580042 C110.100084,7.80945739 110.827761,8.48908829 110.827761,9.96514299"
+                                                        id="Fill-1">
+                                                    </path>
+                                                    <path
+                                                        d="M116.202745,6.1348548 L114.469175,6.1348548 C114.313102,6.1348548 114.191357,6.28433374 114.226483,6.43341407 L118.612898,19.3675277 C118.647625,19.4835233 118.734244,19.516608 118.85559,19.516608 L119.375701,19.516608 C119.531774,19.516608 119.653519,19.6656883 119.618792,19.8151673 L117.884823,24.657089 C117.850095,24.8061694 117.971441,24.9556483 118.127115,24.9556483 L119.739738,24.9556483 C119.861084,24.9556483 119.930539,24.8727373 119.982829,24.8061694 L121.924763,19.5496927 L126.467251,6.43341407 C126.501978,6.28433374 126.380632,6.1348548 126.224559,6.1348548 L124.49059,6.1348548 C124.369244,6.1348548 124.300189,6.21776579 124.247898,6.28433374 L120.571996,17.2118421 C120.485377,17.4438334 120.173231,17.4438334 120.103776,17.2118421 L116.497727,6.28433374 C116.393945,6.21776579 116.306927,6.1348548 116.202745,6.1348548"
+                                                        id="Fill-3">
+                                                    </path>
+                                                    <path
+                                                        d="M137.858597,10.8605816 L137.858597,14.9068768 C137.858597,18.2731425 139.592566,19.8153666 143.389415,19.8153666 C145.002038,19.8153666 146.787898,19.549892 148.088375,19.135337 C148.21012,19.1022524 148.278776,18.9862567 148.245246,18.8702611 L148.001756,17.57677 C147.967029,17.4276897 147.846082,17.3447787 147.68961,17.3942064 C146.146441,17.7756766 144.759346,17.9582402 143.545887,17.9582402 C140.615224,17.9582402 140.112676,16.9796514 140.112676,14.8901352 L140.112676,13.9450297 C140.112676,13.7955508 140.234022,13.7126398 140.355368,13.7126398 L148.261612,13.7126398 C148.417685,13.7126398 148.504703,13.5966441 148.504703,13.4806485 L148.504703,10.9765773 C148.504703,7.57762552 146.805461,5.9524905 143.251304,5.9524905 C139.713512,5.86957951 137.858597,7.54454085 137.858597,10.8605816 L137.858597,10.8605816 Z M140.147005,10.7115013 C140.147005,8.63912529 141.135734,7.72710446 143.303195,7.72710446 C145.43553,7.72710446 146.302515,8.58929898 146.302515,10.7115013 L146.302515,11.6566068 C146.302515,11.8056871 146.181568,11.8885981 146.059823,11.8885981 L140.372931,11.8885981 C140.216858,11.8885981 140.12984,11.7726025 140.12984,11.6566068 L140.12984,10.7115013 L140.147005,10.7115013 Z"
+                                                        id="Fill-5">
+                                                    </path>
+                                                    <path
+                                                        d="M155.370725,11.888638 C152.995299,11.3254013 152.925845,11.0599267 152.925845,9.50135967 C152.925845,8.20786859 153.289883,7.76022899 155.370725,7.76022899 C156.359056,7.76022899 157.780479,7.87622465 158.977173,8.10821596 C159.133246,8.14169924 159.254193,8.02530497 159.254193,7.87622465 L159.375938,6.54925028 C159.375938,6.43325463 159.28892,6.31725897 159.185537,6.2841743 C158.075461,6.0186997 156.740656,5.86922077 155.474907,5.86922077 C151.954679,5.86922077 150.654601,6.84780955 150.654601,9.46827499 C150.654601,12.2202819 150.966747,12.9166545 154.45145,13.7457643 C157.260368,14.3927091 157.451169,14.5417895 157.451169,16.0840135 C157.451169,17.5269835 157.087131,17.9746231 154.763597,17.9746231 C153.65392,17.9746231 152.232497,17.7924581 151.053366,17.5269835 C150.897293,17.4938989 150.775548,17.5600682 150.74122,17.7095471 L150.498528,18.9532119 C150.463801,19.0692076 150.533255,19.1852032 150.654601,19.2182879 C151.799005,19.5997581 153.532974,19.8652327 154.885342,19.8652327 C158.95961,19.8652327 159.705248,18.5717417 159.705248,16.0011025 C159.722812,13.1323027 159.167974,12.8006588 155.370725,11.888638"
+                                                        id="Fill-7">
+                                                    </path>
+                                                    <path
+                                                        d="M48.2703991,19.417075 L45.7389002,6.3669657 C45.704173,6.21788537 45.8255189,6.06840643 45.9819912,6.06840643 L48.7909092,6.06840643 C48.9118559,6.06840643 49.033601,6.15131742 49.033601,6.25097004 L50.541643,14.1103733 C50.5763703,14.3762465 50.940408,14.3762465 51.0098626,14.1438566 L53.4547428,6.2342284 C53.489071,6.11823275 53.5760887,6.0520634 53.6974346,6.0520634 L57.0268626,6.0520634 C57.1478094,6.0520634 57.2168648,6.13497439 57.2691553,6.2342284 L59.7140355,14.1438566 C59.8006542,14.3762465 60.1475278,14.3762465 60.1822551,14.1103733 L61.6902971,6.25097004 C61.7250244,6.13497439 61.8120422,6.06840643 61.9333881,6.06840643 L64.7423061,6.06840643 C64.8979801,6.06840643 65.019326,6.21788537 64.9845987,6.3669657 L62.4359357,19.417075 C62.4012085,19.5330706 62.314989,19.5996386 62.1932439,19.5996386 L58.5177407,19.5996386 C58.3959956,19.5996386 58.326541,19.5167276 58.2746497,19.417075 L55.5874768,10.6452522 C55.500459,10.4132609 55.1883127,10.4132609 55.1192573,10.6452522 L52.4320843,19.417075 C52.3973571,19.5330706 52.3103393,19.5996386 52.1889934,19.5996386 L48.5130909,19.5996386 C48.391745,19.5996386 48.3051264,19.5330706 48.2703991,19.417075"
+                                                        id="Fill-9">
+                                                    </path>
+                                                    <path
+                                                        d="M44.1961309,17.1122293 C42.9303814,17.1122293 42.5312173,16.5816787 42.5312173,15.0725394 L42.5312173,5.27270015 L42.5312173,1.40856993 C42.5312173,1.25948961 42.4098714,1.14309534 42.2541974,1.17657862 L39.2025876,1.59113354 C39.0812417,1.59113354 39.0117872,1.70752781 39.0117872,1.82352347 L39.0117872,1.93951912 L39.0117872,5.27270015 L39.0117872,15.437268 C39.0117872,18.505373 40.9537207,19.8650334 43.554275,19.8650334 C43.8320932,19.8650334 44.733805,19.8315502 45.2535167,19.7817238 C45.3748626,19.7817238 45.4962085,19.6657282 45.4962085,19.5497325 L45.4962085,17.3940469 C45.4962085,17.2449666 45.3748626,17.1620556 45.2191885,17.1620556 C44.8723149,17.1122293 44.4040954,17.1122293 44.1961309,17.1122293"
+                                                        id="Fill-11">
+                                                    </path>
+                                                    <path
+                                                        d="M87.0914657,9.02011721 C85.8257163,9.55066779 84.8030578,10.114303 83.658255,10.8274172 C83.5720356,10.8605019 83.5373083,10.9434129 83.5373083,11.0099808 L83.5373083,19.3672486 C83.5373083,19.5167276 83.4155633,19.5996386 83.2942174,19.5996386 L80.2426076,19.5996386 C80.0865344,19.5996386 79.9999158,19.4832443 79.9999158,19.3672486 L79.9999158,6.78152062 C79.9999158,6.66552497 80.0865344,6.54952931 80.1907163,6.54952931 L82.7222152,6.13457578 C82.8782883,6.10149111 82.9996342,6.21748676 82.9996342,6.31713939 L83.1209801,7.1793339 C83.1557074,7.36189752 83.3636719,7.4448085 83.5197451,7.32881284 C84.317275,6.83134694 85.5834236,6.20114373 86.6060821,5.85275815 C86.7621553,5.81967348 86.9178293,5.88624143 86.9178293,6.03532176 L87.1956475,8.68847327 C87.2475389,8.85429524 87.1784835,8.93720622 87.0914657,9.02011721"
+                                                        id="Fill-13">
+                                                    </path>
+                                                    <path
+                                                        d="M134.217781,17.9744637 C132.795559,17.9744637 132.709339,17.3777438 132.709339,16.4322396 L132.709339,8.22405217 C132.709339,8.07497184 132.830286,7.99206086 132.951632,7.99206086 L136.28106,7.99206086 C136.402406,7.99206086 136.523353,7.90914987 136.523353,7.76006955 L136.679825,6.43349379 C136.679825,6.28401485 136.55808,6.1680192 136.437133,6.1680192 L132.951632,6.1680192 C132.795559,6.1680192 132.709339,6.05202354 132.709339,5.93562927 L132.709339,2.81889375 C132.709339,2.66941482 132.587594,2.55302055 132.431521,2.58650383 L130.611333,2.85197843 C130.489987,2.85197843 130.420532,2.96757547 130.420532,3.08357113 L130.420532,5.95237092 C130.420532,6.10184985 130.299186,6.18476084 130.17784,6.18476084 L128.20118,6.18476084 C128.045107,6.18476084 127.958089,6.3007565 127.958089,6.41675215 L127.958089,7.74332791 C127.958089,7.89240823 128.079834,7.97531922 128.20118,7.97531922 L130.17784,7.97531922 C130.333914,7.97531922 130.420532,8.09171348 130.420532,8.20770914 L130.420532,16.7638836 C130.420532,18.9195692 131.408863,19.7817637 133.853344,19.7817637 C134.408581,19.7817637 134.96302,19.748679 135.518257,19.6326834 C135.639603,19.5995987 135.708659,19.5166877 135.708659,19.4006921 L135.708659,18.0741163 C135.708659,17.9246374 135.552985,17.8086417 135.43124,17.8417264 C134.980184,17.941379 134.581818,17.9744637 134.217781,17.9744637"
+                                                        id="Fill-15">
+                                                    </path>
+                                                    <path
+                                                        d="M97.3387274,6.21776579 C96.5930888,5.91920652 95.6394857,5.72029988 94.4084635,5.72029988 C93.0213682,5.72029988 91.9631841,5.95229119 91.131326,6.31741841 C89.1893925,7.22943924 88.565499,9.00365459 88.565499,10.9600349 L88.565499,14.5586906 C88.565499,17.7423926 90.0216497,19.698773 94.2523903,19.781684 L95.2403216,19.781684 C96.3847251,19.781684 97.58102,19.6656883 98.6739314,19.5162094 C98.7948781,19.4831247 98.916224,19.3675277 98.8639335,19.251532 L98.8639335,19.1351377 L98.5869136,17.2780114 C97.5119646,17.3940071 96.5755256,17.4274903 95.5009757,17.4274903 C92.9000223,17.4274903 92.1024923,16.7143762 92.1024923,15.1888938 L92.1024923,14.7408556 L92.1024923,14.111051 L99.7313172,14.111051 C99.8873903,14.111051 99.974009,13.9946567 99.974009,13.878661 L99.974009,12.8506446 L99.974009,11.1920263 C99.9396808,9.02039623 99.4016076,7.07996031 97.3387274,6.21776579 L97.3387274,6.21776579 Z M96.8182174,11.5906368 C96.8182174,11.7397171 96.6972706,11.8226281 96.5755256,11.8226281 L92.0677651,11.8226281 L92.0677651,10.644734 C92.0677651,9.35164156 92.6569313,8.48944704 94.4084635,8.48944704 C94.599264,8.48944704 94.8068293,8.48944704 94.9980289,8.52293033 C96.2985057,8.70509533 96.8182174,9.5505482 96.8182174,10.644734 L96.8182174,11.5906368 Z"
+                                                        id="Fill-17">
+                                                    </path>
+                                                    <path
+                                                        d="M10.6807539,21.9044842 L10.7673725,21.9044842 C10.9230465,21.9044842 11.0443924,21.7825165 11.0443924,21.6257607 C11.0443924,21.5033739 10.9577738,21.3466181 10.8020998,21.3466181 L10.715082,21.3466181 L10.5242816,21.31183 C7.31659864,20.6839687 4.94157208,17.8070392 4.94157208,14.4414006 C4.94157208,13.0121568 5.37506432,11.6520699 6.12030375,10.5539413 C6.24204881,10.3967664 6.4324501,10.2747986 6.64081377,10.4667616 L11.7038116,15.6271281 C11.7377405,15.6619161 11.8247583,15.7143078 11.8942129,15.7143078 C11.9808315,15.7143078 12.050286,15.6795197 12.0850133,15.6271281 L17.1823392,10.5015496 C17.3731397,10.3095867 17.5467761,10.3447939 17.6509579,10.5363377 C18.3961974,11.6520699 18.8296896,12.9949723 18.8296896,14.4242161 C18.8296896,16.2197822 18.1535056,17.8418273 17.0434301,19.0799464 C17.009102,19.1147344 16.9572107,19.1671261 16.9224834,19.2019141 C16.9224834,19.2367022 16.8877561,19.2890938 16.8877561,19.3238818 C16.8877561,19.4810567 17.009102,19.6030245 17.1651752,19.6030245 L17.1999025,19.6030245 C17.2346297,19.6030245 17.2865211,19.5682364 17.3212484,19.5682364 C24.0830887,16.7084914 23.7713415,9.94368351 23.7713415,9.94368351 C23.7713415,6.09017397 21.9503548,2.62059033 19.1418359,0.441098316 C19.0204901,0.353918635 18.8296896,0.353918635 18.7426718,0.475886362 L12.1025765,7.24111341 C11.9808315,7.36308113 11.790031,7.36308113 11.6690843,7.24111341 L4.97590019,0.475886362 C4.8545543,0.353918635 4.69888029,0.353918635 4.57753439,0.441098316 C1.82050776,2.62059033 -7.98328266e-05,6.03778233 -7.98328266e-05,9.94368351 C-7.98328266e-05,16.1502062 4.66415301,21.2766229 10.6807539,21.9044842"
+                                                        id="Fill-19">
+                                                    </path>
+                                                    <path
+                                                        d="M29.9264125,5.80321087 C28.6953903,5.80321087 27.3949136,5.88612185 26.1638914,6.06828685 C26.0425455,6.10177013 25.9211996,6.21776579 25.9730909,6.33376145 L26.25051,8.37345139 C26.2852373,8.48944704 26.3722551,8.6054427 26.5275299,8.6054427 C27.6723326,8.48944704 28.4179712,8.45636237 29.5795388,8.45636237 C32.1800931,8.45636237 32.9780222,9.16907795 32.9780222,10.694959 L32.9780222,11.6073784 C32.9780222,11.7564587 32.8566763,11.8393697 32.7349313,11.8393697 L29.4577938,11.8393697 C26.5798204,11.8393697 24.8634147,13.2317162 24.8634147,15.768872 C24.8634147,18.1071213 26.7534568,19.781684 29.6146653,19.781684 C31.4001264,19.781684 32.1114369,19.516608 32.7006031,18.9860574 C32.8566763,18.8365785 33.1340954,18.9525741 33.1340954,19.1351377 L33.1340954,19.3177014 C33.1340954,19.4667817 33.2554413,19.5496927 33.3767872,19.5496927 L36.2547605,19.5496927 C36.4108337,19.5496927 36.4978515,19.433697 36.4978515,19.3177014 L36.4978515,10.794213 C36.5321796,7.42834589 34.0876985,5.80321087 29.9264125,5.80321087 L29.9264125,5.80321087 Z M33.0123503,14.5750336 C33.0123503,16.2830796 31.8332195,17.4107487 29.9264125,17.4107487 C28.4702617,17.4107487 27.7070599,16.8801981 27.7070599,15.7856137 C27.7070599,14.5750336 28.5045898,14.0775677 29.9264125,14.0775677 L32.7349313,14.0775677 C32.8914036,14.0775677 32.9780222,14.1935633 32.9780222,14.3099576 L32.9780222,14.5750336 L33.0123503,14.5750336 Z"
+                                                        id="Fill-21">
+                                                    </path>
+                                                    <path
+                                                        d="M70.879694,5.80321087 C69.649071,5.80321087 68.3485943,5.88612185 67.1175721,6.06828685 C66.9962262,6.10177013 66.8748803,6.21776579 66.9267717,6.33376145 L67.2041908,8.37345139 C67.238918,8.48944704 67.3255366,8.6054427 67.4812107,8.6054427 C68.6260134,8.48944704 69.371652,8.45636237 70.5332196,8.45636237 C73.1337739,8.45636237 73.931703,9.16907795 73.931703,10.694959 L73.931703,11.6073784 C73.931703,11.7564587 73.8099579,11.8393697 73.688612,11.8393697 L70.4118737,11.8393697 C67.5335012,11.8393697 65.8170954,13.2317162 65.8170954,15.768872 C65.8170954,18.1071213 67.7071376,19.781684 70.5679469,19.781684 C72.353408,19.781684 73.0647185,19.516608 73.6538847,18.9860574 C73.8099579,18.8365785 74.0877761,18.9525741 74.0877761,19.1351377 L74.0877761,19.3177014 C74.0877761,19.4667817 74.209122,19.5496927 74.3304679,19.5496927 L77.2084413,19.5496927 C77.3645145,19.5496927 77.4515323,19.433697 77.4515323,19.3177014 L77.4515323,10.794213 C77.5377517,7.42834589 75.0413792,5.80321087 70.879694,5.80321087 L70.879694,5.80321087 Z M73.9660311,14.5750336 C73.9660311,16.2830796 72.7869003,17.4107487 70.879694,17.4107487 C69.4235433,17.4107487 68.6603415,16.8801981 68.6603415,15.7856137 C68.6603415,14.5750336 69.4578714,14.0775677 70.879694,14.0775677 L73.688612,14.0775677 C73.8450844,14.0775677 73.931703,14.1935633 73.931703,14.3099576 L73.931703,14.5750336 L73.9660311,14.5750336 Z"
+                                                        id="Fill-23">
+                                                    </path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="col-header imagine-title hidden-xs hidden-sm">Cyberprotection for every one.</p>
+          </div>
+            </div>
+            <div class="row links-row">
+                <div class="col-md-3 col-xs-12 col-md-push-9 newsletter-col">
+                    <div class="row soc-icon-row newsletter-icons hidden-xs hidden-sm">
+                        <div class="footer-soc-icon"><a id="cta-footer-social-twitter-en" class="social socicon-twitter" href="https://twitter.com/malwarebytes" aria-label="Visit Malwarebytes on Twitter"><svg width="18" height="15" viewbox="0 0 18 15" xmlns="http://www.w3.org/2000/svg"> 
+<title>twitter</title>
+<path d="M18,1.731375 C17.330625,2.025 16.617375,2.219625 15.87375,2.314125 C16.63875,1.857375 17.222625,1.139625 17.497125,0.2745 C16.783875,0.69975 15.996375,1.000125 15.157125,1.16775 C14.479875,0.446625 13.514625,0 12.461625,0 C10.418625,0 8.773875,1.65825 8.773875,3.691125 C8.773875,3.983625 8.798625,4.264875 8.859375,4.532625 C5.7915,4.383 3.076875,2.912625 1.25325,0.67275 C0.934875,1.225125 0.748125,1.857375 0.748125,2.538 C0.748125,3.816 1.40625,4.948875 2.38725,5.60475 C1.794375,5.5935 1.21275,5.421375 0.72,5.15025 C0.72,5.1615 0.72,5.176125 0.72,5.19075 C0.72,6.984 1.999125,8.4735 3.6765,8.816625 C3.376125,8.89875 3.04875,8.938125 2.709,8.938125 C2.47275,8.938125 2.23425,8.924625 2.010375,8.875125 C2.4885,10.3365 3.84525,11.410875 5.4585,11.44575 C4.203,12.427875 2.608875,13.019625 0.883125,13.019625 C0.5805,13.019625 0.29025,13.006125 0,12.969 C1.634625,14.023125 3.571875,14.625 5.661,14.625 C12.4515,14.625 16.164,9 16.164,4.12425 C16.164,3.961125 16.158375,3.803625 16.1505,3.64725 C16.882875,3.1275 17.49825,2.478375 18,1.731375 Z" fill="#FFFFFF" fill-rule="nonzero"></path></svg></a></div>
+<div class="footer-soc-icon"><a id="cta-footer-social-facebook-en" class="social socicon-facebook" href="https://www.facebook.com/Malwarebytes" aria-label="Visit Malwarebytes on Facebook"><svg width="9" height="18" viewbox="0 0 9 18" xmlns="http://www.w3.org/2000/svg"> 
+<title>facebook</title>
+<path d="M7.3575,2.98875 L9.00075,2.98875 L9.00075,0.12675 C8.71725,0.08775 7.74225,0 6.60675,0 C4.2375,0 2.6145,1.49025 2.6145,4.22925 L2.6145,6.75 L0,6.75 L0,9.9495 L2.6145,9.9495 L2.6145,18 L5.82,18 L5.82,9.95025 L8.32875,9.95025 L8.727,6.75075 L5.81925,6.75075 L5.81925,4.5465 C5.82,3.62175 6.069,2.98875 7.3575,2.98875 L7.3575,2.98875 Z" fill="#FFFFFF" fill-rule="nonzero"></path></svg></a></div>
+<div class="footer-soc-icon"><a id="cta-footer-social-linkedin-en" class="social socicon-linkedin" href="https://www.linkedin.com/company/malwarebytes" aria-label="Visit Malwarebytes on LinkedIn"><svg width="18" height="18" viewbox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"> 
+<title>linkedin</title>
+<path d="M18,10.5421995 L18,17.1964659 L14.1413625,17.1964659 L14.1413625,10.9900023 C14.1413625,9.42897001 13.5847477,8.3659614 12.1869333,8.3659614 C11.1197396,8.3659614 10.4877935,9.08160893 10.2073936,9.77633109 C10.1069519,10.0232504 10.0776564,10.3706115 10.0776564,10.7179726 L10.0776564,17.200651 L6.21901883,17.200651 C6.21901883,17.200651 6.26923971,6.68356196 6.21901883,5.59544292 L10.0776564,5.59544292 L10.0776564,7.2401767 C10.0692862,7.25273192 10.0609161,7.26528714 10.0525459,7.27784236 L10.0776564,7.27784236 L10.0776564,7.2401767 C10.5924204,6.44919786 11.5047663,5.32340527 13.5554522,5.32340527 C16.0957917,5.31922809 18,6.98070216 18,10.5421995 Z M2.18460823,0 C0.862125087,0 0,0.86631016 0,2.00465008 C0,3.11787956 0.837014648,4.00930016 2.13438735,4.00930016 L2.15949779,4.00930016 C3.50709137,4.00930016 4.34410602,3.11787956 4.34410602,2.00465008 C4.31481051,0.86631016 3.5029063,0 2.18460823,0 Z M0.230179028,17.200651 L4.08881655,17.200651 L4.08881655,5.59125785 L0.230179028,5.59125785 L0.230179028,17.200651 Z" fill="#FFFFFF" fill-rule="nonzero"></path></svg></a></div>
+<div class="footer-soc-icon"><a id="cta-footer-social-youtube-en" class="social socicon-youtube" href="https://www.youtube.com/user/Malwarebytes" aria-label="Visit Malwarebytes on YouTube"><svg width="19" height="13" viewbox="0 0 19 13" xmlns="http://www.w3.org/2000/svg"> 
+<title>Youtube</title>
+<g id="Page-1-yt" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Youtube-yt" transform="translate(0.841817, 0.155733)" fill-rule="nonzero"><rect id="Rectangle-yt1" fill="#000000" x="4.15818301" y="3.84426704" width="8" height="5"></rect><path d="M12.3816985,0.0497938121 C10.6592019,-0.000942071342 8.93584437,-0.0129061211 7.21296183,0.0139016628 C2.33537016,0.106734376 0.288567652,0.0318328937 0.0428741638,3.78403202 C-0.0101476546,5.37145064 -0.0140070255,6.95509895 0.0313851136,8.54201288 C0.274762979,12.6332132 1.58721627,12.5580149 7.21299152,12.6855819 C8.78408203,12.7100444 10.3555585,12.7022366 11.9264709,12.6621882 C15.8837807,12.5532055 17.7243444,12.6494226 17.9687019,8.53981601 C18.0139753,6.95370364 18.0101456,5.37070845 17.9571238,3.78409139 C17.7123803,0.0166922849 15.5901123,0.141201527 12.3816985,0.0497938121 Z M7.17154781,8.68920335 C7.16201814,6.98808173 7.16287907,5.28595073 7.17413062,3.58500723 C8.75614612,4.42439071 10.355796,5.28877104 11.9517646,6.13783263 C10.3571616,6.98413329 8.75665081,7.84803862 7.17154781,8.68920335 Z" id="Shape-yt" fill="#FFFFFF"></path></g></g></svg></a></div>
+<div class="footer-soc-icon"><a id="cta-footer-social-instagram-en" class="social socicon-instagram-v2" href="https://www.instagram.com/malwarebytesofficial" aria-label="Visit Malwarebytes on Instagram"><svg width="18" height="18" viewbox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"> 
+<title>instagram</title>
+<g id="Page-1-instagram" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Footer_mobile-instagram" transform="translate(-273.000000, -934.000000)"><g id="social-icons-instagram" transform="translate(20.000000, 924.000000)"><mask id="mask-2-instagram" fill="#FFFFFF"><path d="M261.75,10 C264.126719,10 264.424219,10.0100625 265.357188,10.0526094 C266.289063,10.0951562 266.924531,10.2430312 267.48125,10.459375 C268.056563,10.6829375 268.545469,10.9821875 269.031094,11.4685781 C269.517813,11.9550781 269.8175,12.443 270.040625,13.0184219 C270.257188,13.5750312 270.404844,14.2110469 270.4475,15.142375 C270.490156,16.0756719 270.5,16.3736094 270.5,18.75 C270.5,21.1263906 270.490156,21.4243281 270.4475,22.357625 C270.404844,23.2889531 270.257188,23.9249687 270.040625,24.4815781 C269.8175,25.057 269.517813,25.5449219 269.031094,26.0314219 C268.545469,26.5178125 268.056563,26.8170625 267.48125,27.040625 C266.924531,27.2569687 266.289063,27.4048438 265.357188,27.4473906 C264.424219,27.4899375 264.126719,27.5 261.75,27.5 C259.373281,27.5 259.075781,27.4899375 258.142812,27.4473906 C257.210938,27.4048438 256.575469,27.2569687 256.01875,27.040625 C255.443437,26.8170625 254.954531,26.5178125 254.468906,26.0314219 C253.982188,25.5449219 253.6825,25.057 253.459375,24.4815781 C253.242812,23.9249687 253.095156,23.2889531 253.0525,22.357625 C253.009844,21.4243281 253,21.1263906 253,18.75 C253,16.3736094 253.009844,16.0756719 253.0525,15.142375 C253.095156,14.2110469 253.242812,13.5750312 253.459375,13.0184219 C253.6825,12.443 253.982188,11.9550781 254.468906,11.4685781 C254.954531,10.9821875 255.443437,10.6829375 256.01875,10.459375 C256.575469,10.2430312 257.210938,10.0951562 258.142812,10.0526094 C259.075781,10.0100625 259.373281,10 261.75,10 Z M261.75,11.5765312 C259.41375,11.5765312 259.137031,11.5855 258.213906,11.6276094 C257.360781,11.6665469 256.898125,11.8090625 256.589687,11.9288281 C256.180625,12.0876406 255.889688,12.2771875 255.583438,12.5834375 C255.277188,12.8895781 255.087969,13.1810625 254.929375,13.5894687 C254.809063,13.8977969 254.666875,14.3611094 254.6275,15.2142344 C254.585938,16.1369219 254.576094,16.4136406 254.576094,18.75 C254.576094,21.0863594 254.585938,21.3630781 254.6275,22.2857656 C254.666875,23.1388906 254.809063,23.6022031 254.929375,23.9105312 C255.087969,24.3189375 255.277188,24.6104219 255.583438,24.9165625 C255.889688,25.2228125 256.180625,25.4123594 256.589687,25.5711719 C256.898125,25.6909375 257.360781,25.8334531 258.213906,25.8723906 C259.137031,25.9145 259.41375,25.9234687 261.75,25.9234687 C264.08625,25.9234687 264.362969,25.9145 265.286094,25.8723906 C266.139219,25.8334531 266.601875,25.6909375 266.910313,25.5711719 C267.319375,25.4123594 267.610312,25.2228125 267.916562,24.9165625 C268.222813,24.6104219 268.412031,24.3189375 268.570625,23.9105312 C268.690938,23.6022031 268.833125,23.1388906 268.8725,22.2857656 C268.914062,21.3630781 268.923906,21.0863594 268.923906,18.75 C268.923906,16.4136406 268.914062,16.1369219 268.8725,15.2142344 C268.833125,14.3611094 268.690938,13.8977969 268.570625,13.5894687 C268.412031,13.1810625 268.222813,12.8895781 267.916562,12.5834375 C267.610312,12.2771875 267.319375,12.0876406 266.910313,11.9288281 C266.601875,11.8090625 266.139219,11.6665469 265.286094,11.6276094 C264.362969,11.5855 264.08625,11.5765312 261.75,11.5765312 Z M261.75,14.2567656 C264.231719,14.2567656 266.243125,16.2683906 266.243125,18.75 C266.243125,21.2316094 264.231719,23.2432344 261.75,23.2432344 C259.268281,23.2432344 257.256875,21.2316094 257.256875,18.75 C257.256875,16.2683906 259.268281,14.2567656 261.75,14.2567656 Z M261.75,21.6667031 C263.361094,21.6667031 264.667031,20.360875 264.667031,18.75 C264.667031,17.139125 263.361094,15.8332969 261.75,15.8332969 C260.138906,15.8332969 258.832969,17.139125 258.832969,18.75 C258.832969,20.360875 260.138906,21.6667031 261.75,21.6667031 Z M267.470313,14.07925 C267.470313,14.6591562 267.001094,15.12925 266.420313,15.12925 C265.840625,15.12925 265.370312,14.6591562 265.370312,14.07925 C265.370312,13.4993437 265.840625,13.02925 266.420313,13.02925 C267.001094,13.02925 267.470313,13.4993437 267.470313,14.07925 Z"></path></mask><path d="M261.75,10 C264.126719,10 264.424219,10.0100625 265.357188,10.0526094 C266.289063,10.0951562 266.924531,10.2430312 267.48125,10.459375 C268.056563,10.6829375 268.545469,10.9821875 269.031094,11.4685781 C269.517813,11.9550781 269.8175,12.443 270.040625,13.0184219 C270.257188,13.5750312 270.404844,14.2110469 270.4475,15.142375 C270.490156,16.0756719 270.5,16.3736094 270.5,18.75 C270.5,21.1263906 270.490156,21.4243281 270.4475,22.357625 C270.404844,23.2889531 270.257188,23.9249687 270.040625,24.4815781 C269.8175,25.057 269.517813,25.5449219 269.031094,26.0314219 C268.545469,26.5178125 268.056563,26.8170625 267.48125,27.040625 C266.924531,27.2569687 266.289063,27.4048438 265.357188,27.4473906 C264.424219,27.4899375 264.126719,27.5 261.75,27.5 C259.373281,27.5 259.075781,27.4899375 258.142812,27.4473906 C257.210938,27.4048438 256.575469,27.2569687 256.01875,27.040625 C255.443437,26.8170625 254.954531,26.5178125 254.468906,26.0314219 C253.982188,25.5449219 253.6825,25.057 253.459375,24.4815781 C253.242812,23.9249687 253.095156,23.2889531 253.0525,22.357625 C253.009844,21.4243281 253,21.1263906 253,18.75 C253,16.3736094 253.009844,16.0756719 253.0525,15.142375 C253.095156,14.2110469 253.242812,13.5750312 253.459375,13.0184219 C253.6825,12.443 253.982188,11.9550781 254.468906,11.4685781 C254.954531,10.9821875 255.443437,10.6829375 256.01875,10.459375 C256.575469,10.2430312 257.210938,10.0951562 258.142812,10.0526094 C259.075781,10.0100625 259.373281,10 261.75,10 Z M261.75,11.5765312 C259.41375,11.5765312 259.137031,11.5855 258.213906,11.6276094 C257.360781,11.6665469 256.898125,11.8090625 256.589687,11.9288281 C256.180625,12.0876406 255.889688,12.2771875 255.583438,12.5834375 C255.277188,12.8895781 255.087969,13.1810625 254.929375,13.5894687 C254.809063,13.8977969 254.666875,14.3611094 254.6275,15.2142344 C254.585938,16.1369219 254.576094,16.4136406 254.576094,18.75 C254.576094,21.0863594 254.585938,21.3630781 254.6275,22.2857656 C254.666875,23.1388906 254.809063,23.6022031 254.929375,23.9105312 C255.087969,24.3189375 255.277188,24.6104219 255.583438,24.9165625 C255.889688,25.2228125 256.180625,25.4123594 256.589687,25.5711719 C256.898125,25.6909375 257.360781,25.8334531 258.213906,25.8723906 C259.137031,25.9145 259.41375,25.9234687 261.75,25.9234687 C264.08625,25.9234687 264.362969,25.9145 265.286094,25.8723906 C266.139219,25.8334531 266.601875,25.6909375 266.910313,25.5711719 C267.319375,25.4123594 267.610312,25.2228125 267.916562,24.9165625 C268.222813,24.6104219 268.412031,24.3189375 268.570625,23.9105312 C268.690938,23.6022031 268.833125,23.1388906 268.8725,22.2857656 C268.914062,21.3630781 268.923906,21.0863594 268.923906,18.75 C268.923906,16.4136406 268.914062,16.1369219 268.8725,15.2142344 C268.833125,14.3611094 268.690938,13.8977969 268.570625,13.5894687 C268.412031,13.1810625 268.222813,12.8895781 267.916562,12.5834375 C267.610312,12.2771875 267.319375,12.0876406 266.910313,11.9288281 C266.601875,11.8090625 266.139219,11.6665469 265.286094,11.6276094 C264.362969,11.5855 264.08625,11.5765312 261.75,11.5765312 Z M261.75,14.2567656 C264.231719,14.2567656 266.243125,16.2683906 266.243125,18.75 C266.243125,21.2316094 264.231719,23.2432344 261.75,23.2432344 C259.268281,23.2432344 257.256875,21.2316094 257.256875,18.75 C257.256875,16.2683906 259.268281,14.2567656 261.75,14.2567656 Z M261.75,21.6667031 C263.361094,21.6667031 264.667031,20.360875 264.667031,18.75 C264.667031,17.139125 263.361094,15.8332969 261.75,15.8332969 C260.138906,15.8332969 258.832969,17.139125 258.832969,18.75 C258.832969,20.360875 260.138906,21.6667031 261.75,21.6667031 Z M267.470313,14.07925 C267.470313,14.6591562 267.001094,15.12925 266.420313,15.12925 C265.840625,15.12925 265.370312,14.6591562 265.370312,14.07925 C265.370312,13.4993437 265.840625,13.02925 266.420313,13.02925 C267.001094,13.02925 267.470313,13.4993437 267.470313,14.07925 Z" fill="#FFFFFF"></path></g></g></g></svg></a></div>                    </div>
+                    <div class="row newsletter-refresh">
+                        <div class="col-xs-12 newsletter-col">
+                            <p class="header">Cybersecurity info you can't do without</p>
+<p>Want to stay informed on the latest news in cybersecurity? Sign up for our newsletter and learn how to protect your computer from threats.</p>                        </div>
+                        <div class="col-xs-12">
+                            <form class="newsletter-form form-inline" action="/newsletter/">
+                                <div class="email-input">
+                                    <label for="cta-footer-newsletter-input-email-en"
+                                        aria-label="cta-footer-newsletter-input-email-en"
+                                        aria-labelledby="cta-footer-newsletter-input-email-en">
+                                        <input type="text" class="email-input-field"
+                                            id="cta-footer-newsletter-input-email-en" name="email"
+                                            placeholder="Email Address">
+                                    </label>
+                                    <input name="source" type="hidden" value="">
+                                    <input type="submit" class="submit-bttn" id="cta-footer-newsletter-subscribe-email-en"
+                                        value="">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <p class="col-header imagine-title hidden-md hidden-lg">Cyberprotection for every one.</p>
+                </div>
+                <div class="col-md-2 col-xs-12 col-md-pull-3 footer-col">
+                    <div class="col-section">
+<p class="footer-head-link"><a href="/for-home" class="for-home-link footer-head cta">FOR PERSONAL</a></p>
+<p class="footer-list"><a class="cta" href="/premium">Windows</a></p>
+<p class="footer-list"><a class="cta" href="/mac">Mac</a></p>
+<p class="footer-list"><a class="cta" href="/ios">iOS</a></p>
+<p class="footer-list"><a class="cta" href="/android">Android</a></p>
+<p class="footer-list"><a class="cta" href="/vpn">VPN Connection</a></p>
+<p class="footer-list"><a class="cta" href="/for-home/products">SEE ALL</a></p>
+</div>
+<div class="col-section-bottom hidden-xs hidden-sm">
+<p class="footer-head">COMPANY</p>
+<p class="footer-list"><a class="cta" href="/company">About Us</a></p>
+<p class="footer-list"><a class="cta" href="https://support.malwarebytes.com/hc/en-us">Contact Us</a></p>
+<p class="footer-list"><a class="cta" href="/jobs">Careers</a></p>
+<p class="footer-list"><a class="cta" href="https://press.malwarebytes.com">News and Press</a></p>
+<p class="footer-list"><a class="cta" href="/blog">Blog</a></p>
+<p class="footer-list"><a class="cta" href="/scholarship">Scholarship</a></p>
+<p class="footer-list"><a class="cta" href="https://forums.malwarebytes.com">Forums</a></p>
+</div>                </div>
+                <div class="col-md-2 col-xs-12 col-md-pull-3 footer-col company-col">
+                    <div class="col-section">
+<p class="footer-head-link"><a href="/business" class="footer-head cta">FOR BUSINESS</a></p>
+<p class="footer-list"><a class="cta" href="/business/solutions/small-business">Small Businesses</a></p>
+<p class="footer-list"><a class="cta" href="/business/solutions/mid-market">Mid-size Businesses</a></p>
+<p class="footer-list"><a class="cta" href="/business/solutions/enterprise">Large Enterprise</a></p>
+<p class="footer-list"><a class="cta" href="/business/endpoint-protection">Endpoint Protection</a></p>
+<p class="footer-list"><a class="cta" href="/business/edr">Endpoint Detection &amp;&nbsp;Response</a></p>
+<p class="footer-list"><a class="cta" href="/business/managed-detection-and-response">Managed Detection and Response (MDR)</a></p>
+</div>
+<div class="address hidden-xs hidden-sm">
+<p class="footer-head">MY ACCOUNT</p>
+<p class="footer-list"><a class="cta" href="https://my.malwarebytes.com/en/login">Sign In</a></p>
+</div>                </div>
+                <div class="col-md-2 col-xs-12 col-md-pull-3 footer-col company-col">
+                    <div class="col-section">
+<p class="footer-head">SOLUTIONS</p>
+<p class="footer-list"><a class="cta" href="/solutions/rootkit-scanner">Free Rootkit Scanner</a></p>
+<p class="footer-list"><a class="cta" href="/solutions/trojan-scanner">Free Trojan Scanner</a></p>
+<p class="footer-list"><a class="cta" href="/solutions/virus-scanner">Free Virus Scanner</a></p>
+<p class="footer-list"><a class="cta" href="/solutions/spyware-scanner">Free Spyware Scanner</a></p>
+<p class="footer-list"><a class="cta" href="/solutions/ransomware-protection">Anti Ransomware Protection</a></p>
+<p class="footer-list"><a class="cta" href="/solutions">SEE ALL</a></p>
+</div>
+<div class="address hidden-xs hidden-sm"><!-- icon here -->
+<div class="hq">
+<p class="footer-head">ADDRESS</p>
+<p class="address-text">3979 Freedom Circle<br />12th Floor<br /> Santa Clara, CA 95054</p>
+</div>
+<div class="local hidden outside-na">
+<p class="footer-head">ADDRESS</p>
+<div class="address-text">One Albert Quay<br />2nd Floor<br /> Cork T12 X8N6<br /> Ireland</div>
+</div>
+</div>                </div>
+                <div class="col-md-3 col-xs-12 col-md-pull-3 footer-col learn-col">
+                    <div class="col-section">
+<p class="footer-head-link"><a href="/cybersecurity" id="cta-footernavigation-learn-linkto-cybersecurity-en" class="footer-head">LEARN</a></p>
+<p class="footer-list"><a href="/malware" id="cta-footernavigation-learn-linkto-malware-en">Malware</a></p>
+<p class="footer-list"><a href="/hacker" id="cta-footernavigation-learn-linkto-hacker-en">Hacking</a></p>
+<p class="footer-list"><a href="/phishing" id="cta-footernavigation-learn-linkto-phishing-en">Phishing</a></p>
+<p class="footer-list"><a href="/ransomware" id="cta-footernavigation-learn-linkto-ransomware-en">Ransomware</a></p>
+<p class="footer-list"><a href="/computer-virus" id="cta-footernavigation-learn-linkto-computer-virus-en">Computer Virus</a></p>
+<p class="footer-list"><a href="/antivirus" id="cta-footernavigation-learn-linkto-vpn-en">Antivirus<br /></a></p>
+<p class="footer-list"><a href="/what-is-vpn" id="cta-footernavigation-learn-linkto-vpn-en">What is VPN?</a></p>
+</div>
+<div class="col-section-bottom bottom-company hidden-md hidden-lg">
+<p class="footer-head">COMPANY</p>
+<p class="footer-list"><a class="cta" href="/company">About Us</a></p>
+<p class="footer-list"><a class="cta" href="/contact">Contact Us</a></p>
+<p class="footer-list"><a class="cta" href="/jobs">Careers</a></p>
+<p class="footer-list"><a class="cta" href="https://press.malwarebytes.com">News and Press</a></p>
+<p class="footer-list"><a class="cta" href="/blog">Blog</a></p>
+<p class="footer-list"><a class="cta" href="/scholarship">Scholarship</a></p>
+<p class="footer-list"><a class="cta" href="https://forums.malwarebytes.com">Forums</a></p>
+</div>
+<div class="address col-section-bottom hidden-md hidden-lg">
+<p class="footer-head">MY ACCOUNT</p>
+<p class="footer-list"><a class="cta" href="https://my.malwarebytes.com/en/login">Sign In</a></p>
+</div>
+<div class="address col-section-bottom hidden-md hidden-lg"><!-- icon here -->
+<div class="hq">
+<p class="footer-head">ADDRESS</p>
+<p class="address-text">3979 Freedom Circle, 12th Floor<br /> Santa Clara, CA 95054</p>
+</div>
+<div class="local hidden outside-na">
+<p class="footer-head">ADDRESS</p>
+<div class="address-text">One Albert Quay, 2nd Floor<br /> Cork T12 X8N6<br /> Ireland</div>
+</div>
+</div>                </div>
+            </div>
+            <div class="row soc-icon-row hidden-md hidden-lg">
+                <div class="footer-soc-icon"><a id="cta-footer-social-twitter-en" class="social socicon-twitter" href="https://twitter.com/malwarebytes" aria-label="Visit Malwarebytes on Twitter"><svg width="18" height="15" viewbox="0 0 18 15" xmlns="http://www.w3.org/2000/svg"> 
+<title>twitter</title>
+<path d="M18,1.731375 C17.330625,2.025 16.617375,2.219625 15.87375,2.314125 C16.63875,1.857375 17.222625,1.139625 17.497125,0.2745 C16.783875,0.69975 15.996375,1.000125 15.157125,1.16775 C14.479875,0.446625 13.514625,0 12.461625,0 C10.418625,0 8.773875,1.65825 8.773875,3.691125 C8.773875,3.983625 8.798625,4.264875 8.859375,4.532625 C5.7915,4.383 3.076875,2.912625 1.25325,0.67275 C0.934875,1.225125 0.748125,1.857375 0.748125,2.538 C0.748125,3.816 1.40625,4.948875 2.38725,5.60475 C1.794375,5.5935 1.21275,5.421375 0.72,5.15025 C0.72,5.1615 0.72,5.176125 0.72,5.19075 C0.72,6.984 1.999125,8.4735 3.6765,8.816625 C3.376125,8.89875 3.04875,8.938125 2.709,8.938125 C2.47275,8.938125 2.23425,8.924625 2.010375,8.875125 C2.4885,10.3365 3.84525,11.410875 5.4585,11.44575 C4.203,12.427875 2.608875,13.019625 0.883125,13.019625 C0.5805,13.019625 0.29025,13.006125 0,12.969 C1.634625,14.023125 3.571875,14.625 5.661,14.625 C12.4515,14.625 16.164,9 16.164,4.12425 C16.164,3.961125 16.158375,3.803625 16.1505,3.64725 C16.882875,3.1275 17.49825,2.478375 18,1.731375 Z" fill="#FFFFFF" fill-rule="nonzero"></path></svg></a></div>
+<div class="footer-soc-icon"><a id="cta-footer-social-facebook-en" class="social socicon-facebook" href="https://www.facebook.com/Malwarebytes" aria-label="Visit Malwarebytes on Facebook"><svg width="9" height="18" viewbox="0 0 9 18" xmlns="http://www.w3.org/2000/svg"> 
+<title>facebook</title>
+<path d="M7.3575,2.98875 L9.00075,2.98875 L9.00075,0.12675 C8.71725,0.08775 7.74225,0 6.60675,0 C4.2375,0 2.6145,1.49025 2.6145,4.22925 L2.6145,6.75 L0,6.75 L0,9.9495 L2.6145,9.9495 L2.6145,18 L5.82,18 L5.82,9.95025 L8.32875,9.95025 L8.727,6.75075 L5.81925,6.75075 L5.81925,4.5465 C5.82,3.62175 6.069,2.98875 7.3575,2.98875 L7.3575,2.98875 Z" fill="#FFFFFF" fill-rule="nonzero"></path></svg></a></div>
+<div class="footer-soc-icon"><a id="cta-footer-social-linkedin-en" class="social socicon-linkedin" href="https://www.linkedin.com/company/malwarebytes" aria-label="Visit Malwarebytes on LinkedIn"><svg width="18" height="18" viewbox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"> 
+<title>linkedin</title>
+<path d="M18,10.5421995 L18,17.1964659 L14.1413625,17.1964659 L14.1413625,10.9900023 C14.1413625,9.42897001 13.5847477,8.3659614 12.1869333,8.3659614 C11.1197396,8.3659614 10.4877935,9.08160893 10.2073936,9.77633109 C10.1069519,10.0232504 10.0776564,10.3706115 10.0776564,10.7179726 L10.0776564,17.200651 L6.21901883,17.200651 C6.21901883,17.200651 6.26923971,6.68356196 6.21901883,5.59544292 L10.0776564,5.59544292 L10.0776564,7.2401767 C10.0692862,7.25273192 10.0609161,7.26528714 10.0525459,7.27784236 L10.0776564,7.27784236 L10.0776564,7.2401767 C10.5924204,6.44919786 11.5047663,5.32340527 13.5554522,5.32340527 C16.0957917,5.31922809 18,6.98070216 18,10.5421995 Z M2.18460823,0 C0.862125087,0 0,0.86631016 0,2.00465008 C0,3.11787956 0.837014648,4.00930016 2.13438735,4.00930016 L2.15949779,4.00930016 C3.50709137,4.00930016 4.34410602,3.11787956 4.34410602,2.00465008 C4.31481051,0.86631016 3.5029063,0 2.18460823,0 Z M0.230179028,17.200651 L4.08881655,17.200651 L4.08881655,5.59125785 L0.230179028,5.59125785 L0.230179028,17.200651 Z" fill="#FFFFFF" fill-rule="nonzero"></path></svg></a></div>
+<div class="footer-soc-icon"><a id="cta-footer-social-youtube-en" class="social socicon-youtube" href="https://www.youtube.com/user/Malwarebytes" aria-label="Visit Malwarebytes on YouTube"><svg width="19" height="13" viewbox="0 0 19 13" xmlns="http://www.w3.org/2000/svg"> 
+<title>Youtube</title>
+<g id="Page-1-yt" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Youtube-yt" transform="translate(0.841817, 0.155733)" fill-rule="nonzero"><rect id="Rectangle-yt1" fill="#000000" x="4.15818301" y="3.84426704" width="8" height="5"></rect><path d="M12.3816985,0.0497938121 C10.6592019,-0.000942071342 8.93584437,-0.0129061211 7.21296183,0.0139016628 C2.33537016,0.106734376 0.288567652,0.0318328937 0.0428741638,3.78403202 C-0.0101476546,5.37145064 -0.0140070255,6.95509895 0.0313851136,8.54201288 C0.274762979,12.6332132 1.58721627,12.5580149 7.21299152,12.6855819 C8.78408203,12.7100444 10.3555585,12.7022366 11.9264709,12.6621882 C15.8837807,12.5532055 17.7243444,12.6494226 17.9687019,8.53981601 C18.0139753,6.95370364 18.0101456,5.37070845 17.9571238,3.78409139 C17.7123803,0.0166922849 15.5901123,0.141201527 12.3816985,0.0497938121 Z M7.17154781,8.68920335 C7.16201814,6.98808173 7.16287907,5.28595073 7.17413062,3.58500723 C8.75614612,4.42439071 10.355796,5.28877104 11.9517646,6.13783263 C10.3571616,6.98413329 8.75665081,7.84803862 7.17154781,8.68920335 Z" id="Shape-yt" fill="#FFFFFF"></path></g></g></svg></a></div>
+<div class="footer-soc-icon"><a id="cta-footer-social-instagram-en" class="social socicon-instagram-v2" href="https://www.instagram.com/malwarebytesofficial" aria-label="Visit Malwarebytes on Instagram"><svg width="18" height="18" viewbox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"> 
+<title>instagram</title>
+<g id="Page-1-instagram" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Footer_mobile-instagram" transform="translate(-273.000000, -934.000000)"><g id="social-icons-instagram" transform="translate(20.000000, 924.000000)"><mask id="mask-2-instagram" fill="#FFFFFF"><path d="M261.75,10 C264.126719,10 264.424219,10.0100625 265.357188,10.0526094 C266.289063,10.0951562 266.924531,10.2430312 267.48125,10.459375 C268.056563,10.6829375 268.545469,10.9821875 269.031094,11.4685781 C269.517813,11.9550781 269.8175,12.443 270.040625,13.0184219 C270.257188,13.5750312 270.404844,14.2110469 270.4475,15.142375 C270.490156,16.0756719 270.5,16.3736094 270.5,18.75 C270.5,21.1263906 270.490156,21.4243281 270.4475,22.357625 C270.404844,23.2889531 270.257188,23.9249687 270.040625,24.4815781 C269.8175,25.057 269.517813,25.5449219 269.031094,26.0314219 C268.545469,26.5178125 268.056563,26.8170625 267.48125,27.040625 C266.924531,27.2569687 266.289063,27.4048438 265.357188,27.4473906 C264.424219,27.4899375 264.126719,27.5 261.75,27.5 C259.373281,27.5 259.075781,27.4899375 258.142812,27.4473906 C257.210938,27.4048438 256.575469,27.2569687 256.01875,27.040625 C255.443437,26.8170625 254.954531,26.5178125 254.468906,26.0314219 C253.982188,25.5449219 253.6825,25.057 253.459375,24.4815781 C253.242812,23.9249687 253.095156,23.2889531 253.0525,22.357625 C253.009844,21.4243281 253,21.1263906 253,18.75 C253,16.3736094 253.009844,16.0756719 253.0525,15.142375 C253.095156,14.2110469 253.242812,13.5750312 253.459375,13.0184219 C253.6825,12.443 253.982188,11.9550781 254.468906,11.4685781 C254.954531,10.9821875 255.443437,10.6829375 256.01875,10.459375 C256.575469,10.2430312 257.210938,10.0951562 258.142812,10.0526094 C259.075781,10.0100625 259.373281,10 261.75,10 Z M261.75,11.5765312 C259.41375,11.5765312 259.137031,11.5855 258.213906,11.6276094 C257.360781,11.6665469 256.898125,11.8090625 256.589687,11.9288281 C256.180625,12.0876406 255.889688,12.2771875 255.583438,12.5834375 C255.277188,12.8895781 255.087969,13.1810625 254.929375,13.5894687 C254.809063,13.8977969 254.666875,14.3611094 254.6275,15.2142344 C254.585938,16.1369219 254.576094,16.4136406 254.576094,18.75 C254.576094,21.0863594 254.585938,21.3630781 254.6275,22.2857656 C254.666875,23.1388906 254.809063,23.6022031 254.929375,23.9105312 C255.087969,24.3189375 255.277188,24.6104219 255.583438,24.9165625 C255.889688,25.2228125 256.180625,25.4123594 256.589687,25.5711719 C256.898125,25.6909375 257.360781,25.8334531 258.213906,25.8723906 C259.137031,25.9145 259.41375,25.9234687 261.75,25.9234687 C264.08625,25.9234687 264.362969,25.9145 265.286094,25.8723906 C266.139219,25.8334531 266.601875,25.6909375 266.910313,25.5711719 C267.319375,25.4123594 267.610312,25.2228125 267.916562,24.9165625 C268.222813,24.6104219 268.412031,24.3189375 268.570625,23.9105312 C268.690938,23.6022031 268.833125,23.1388906 268.8725,22.2857656 C268.914062,21.3630781 268.923906,21.0863594 268.923906,18.75 C268.923906,16.4136406 268.914062,16.1369219 268.8725,15.2142344 C268.833125,14.3611094 268.690938,13.8977969 268.570625,13.5894687 C268.412031,13.1810625 268.222813,12.8895781 267.916562,12.5834375 C267.610312,12.2771875 267.319375,12.0876406 266.910313,11.9288281 C266.601875,11.8090625 266.139219,11.6665469 265.286094,11.6276094 C264.362969,11.5855 264.08625,11.5765312 261.75,11.5765312 Z M261.75,14.2567656 C264.231719,14.2567656 266.243125,16.2683906 266.243125,18.75 C266.243125,21.2316094 264.231719,23.2432344 261.75,23.2432344 C259.268281,23.2432344 257.256875,21.2316094 257.256875,18.75 C257.256875,16.2683906 259.268281,14.2567656 261.75,14.2567656 Z M261.75,21.6667031 C263.361094,21.6667031 264.667031,20.360875 264.667031,18.75 C264.667031,17.139125 263.361094,15.8332969 261.75,15.8332969 C260.138906,15.8332969 258.832969,17.139125 258.832969,18.75 C258.832969,20.360875 260.138906,21.6667031 261.75,21.6667031 Z M267.470313,14.07925 C267.470313,14.6591562 267.001094,15.12925 266.420313,15.12925 C265.840625,15.12925 265.370312,14.6591562 265.370312,14.07925 C265.370312,13.4993437 265.840625,13.02925 266.420313,13.02925 C267.001094,13.02925 267.470313,13.4993437 267.470313,14.07925 Z"></path></mask><path d="M261.75,10 C264.126719,10 264.424219,10.0100625 265.357188,10.0526094 C266.289063,10.0951562 266.924531,10.2430312 267.48125,10.459375 C268.056563,10.6829375 268.545469,10.9821875 269.031094,11.4685781 C269.517813,11.9550781 269.8175,12.443 270.040625,13.0184219 C270.257188,13.5750312 270.404844,14.2110469 270.4475,15.142375 C270.490156,16.0756719 270.5,16.3736094 270.5,18.75 C270.5,21.1263906 270.490156,21.4243281 270.4475,22.357625 C270.404844,23.2889531 270.257188,23.9249687 270.040625,24.4815781 C269.8175,25.057 269.517813,25.5449219 269.031094,26.0314219 C268.545469,26.5178125 268.056563,26.8170625 267.48125,27.040625 C266.924531,27.2569687 266.289063,27.4048438 265.357188,27.4473906 C264.424219,27.4899375 264.126719,27.5 261.75,27.5 C259.373281,27.5 259.075781,27.4899375 258.142812,27.4473906 C257.210938,27.4048438 256.575469,27.2569687 256.01875,27.040625 C255.443437,26.8170625 254.954531,26.5178125 254.468906,26.0314219 C253.982188,25.5449219 253.6825,25.057 253.459375,24.4815781 C253.242812,23.9249687 253.095156,23.2889531 253.0525,22.357625 C253.009844,21.4243281 253,21.1263906 253,18.75 C253,16.3736094 253.009844,16.0756719 253.0525,15.142375 C253.095156,14.2110469 253.242812,13.5750312 253.459375,13.0184219 C253.6825,12.443 253.982188,11.9550781 254.468906,11.4685781 C254.954531,10.9821875 255.443437,10.6829375 256.01875,10.459375 C256.575469,10.2430312 257.210938,10.0951562 258.142812,10.0526094 C259.075781,10.0100625 259.373281,10 261.75,10 Z M261.75,11.5765312 C259.41375,11.5765312 259.137031,11.5855 258.213906,11.6276094 C257.360781,11.6665469 256.898125,11.8090625 256.589687,11.9288281 C256.180625,12.0876406 255.889688,12.2771875 255.583438,12.5834375 C255.277188,12.8895781 255.087969,13.1810625 254.929375,13.5894687 C254.809063,13.8977969 254.666875,14.3611094 254.6275,15.2142344 C254.585938,16.1369219 254.576094,16.4136406 254.576094,18.75 C254.576094,21.0863594 254.585938,21.3630781 254.6275,22.2857656 C254.666875,23.1388906 254.809063,23.6022031 254.929375,23.9105312 C255.087969,24.3189375 255.277188,24.6104219 255.583438,24.9165625 C255.889688,25.2228125 256.180625,25.4123594 256.589687,25.5711719 C256.898125,25.6909375 257.360781,25.8334531 258.213906,25.8723906 C259.137031,25.9145 259.41375,25.9234687 261.75,25.9234687 C264.08625,25.9234687 264.362969,25.9145 265.286094,25.8723906 C266.139219,25.8334531 266.601875,25.6909375 266.910313,25.5711719 C267.319375,25.4123594 267.610312,25.2228125 267.916562,24.9165625 C268.222813,24.6104219 268.412031,24.3189375 268.570625,23.9105312 C268.690938,23.6022031 268.833125,23.1388906 268.8725,22.2857656 C268.914062,21.3630781 268.923906,21.0863594 268.923906,18.75 C268.923906,16.4136406 268.914062,16.1369219 268.8725,15.2142344 C268.833125,14.3611094 268.690938,13.8977969 268.570625,13.5894687 C268.412031,13.1810625 268.222813,12.8895781 267.916562,12.5834375 C267.610312,12.2771875 267.319375,12.0876406 266.910313,11.9288281 C266.601875,11.8090625 266.139219,11.6665469 265.286094,11.6276094 C264.362969,11.5855 264.08625,11.5765312 261.75,11.5765312 Z M261.75,14.2567656 C264.231719,14.2567656 266.243125,16.2683906 266.243125,18.75 C266.243125,21.2316094 264.231719,23.2432344 261.75,23.2432344 C259.268281,23.2432344 257.256875,21.2316094 257.256875,18.75 C257.256875,16.2683906 259.268281,14.2567656 261.75,14.2567656 Z M261.75,21.6667031 C263.361094,21.6667031 264.667031,20.360875 264.667031,18.75 C264.667031,17.139125 263.361094,15.8332969 261.75,15.8332969 C260.138906,15.8332969 258.832969,17.139125 258.832969,18.75 C258.832969,20.360875 260.138906,21.6667031 261.75,21.6667031 Z M267.470313,14.07925 C267.470313,14.6591562 267.001094,15.12925 266.420313,15.12925 C265.840625,15.12925 265.370312,14.6591562 265.370312,14.07925 C265.370312,13.4993437 265.840625,13.02925 266.420313,13.02925 C267.001094,13.02925 267.470313,13.4993437 267.470313,14.07925 Z" fill="#FFFFFF"></path></g></g></g></svg></a></div>            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-10 col-md-2 lang-select">
+                        <div class="lang-select-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+    <path fill="#FFF" d="M21.77 10.999c0-2.619-.944-5.121-2.663-7.087l.006-.006-.222-.238C16.86 1.484 13.984.231 11.004.23h-.007c-.558 0-1.113.044-1.659.13-2.368.373-4.577 1.533-6.23 3.31l-.22.237.005.006C1.174 5.878.229 8.38.229 11c0 2.62.945 5.123 2.664 7.089l-.006.005.222.239c2.034 2.185 4.91 3.439 7.89 3.439h.002c.558 0 1.113-.044 1.66-.13 2.369-.373 4.578-1.533 6.23-3.309l.222-.238-.006-.006c1.719-1.966 2.664-4.47 2.664-7.09zm-3.675 7.178c-.058.057-.117.113-.176.168-.065.061-.13.122-.197.181l-.185.16-.205.17-.192.15c-.07.054-.141.107-.213.159l-.198.14c-.073.05-.147.099-.22.147-.069.044-.137.088-.206.13l-.227.136-.21.12c-.078.042-.156.083-.235.123l-.215.11-.241.112c-.073.033-.146.066-.22.097-.081.035-.164.068-.247.1-.074.03-.148.06-.222.087-.085.031-.17.06-.256.089-.074.025-.148.051-.223.075-.087.027-.175.051-.263.076-.075.022-.15.044-.224.063-.09.023-.18.044-.271.064-.075.017-.149.036-.223.051-.06.013-.121.022-.182.033.98-.955 1.777-2.657 2.268-4.816 1.131.484 2.156 1.156 3.052 2.004-.023.024-.046.048-.07.07zm-9.341 2.658c-.092-.02-.184-.041-.275-.065l-.221-.062c-.089-.025-.178-.05-.266-.078-.074-.023-.147-.048-.22-.073-.087-.03-.174-.058-.26-.09-.073-.027-.146-.056-.219-.085-.083-.033-.167-.067-.25-.102-.073-.031-.145-.064-.217-.097-.081-.037-.163-.074-.243-.113-.072-.035-.143-.071-.214-.108-.079-.04-.157-.082-.235-.125l-.21-.119c-.076-.044-.152-.09-.228-.136-.068-.042-.136-.086-.204-.13-.074-.048-.148-.097-.22-.147l-.2-.14c-.07-.052-.142-.105-.212-.159l-.192-.15c-.07-.056-.137-.112-.205-.17-.062-.052-.124-.105-.184-.16-.067-.059-.132-.12-.198-.18-.059-.056-.118-.112-.176-.17l-.069-.07c.9-.85 1.925-1.522 3.052-2.004.491 2.16 1.289 3.862 2.268 4.817-.061-.012-.123-.021-.184-.034-.073-.015-.145-.033-.218-.05zM3.907 3.822c.056-.056.114-.11.172-.165.066-.062.133-.124.201-.185l.18-.156c.07-.059.14-.117.21-.173.062-.05.125-.099.188-.147.071-.055.144-.11.217-.162.064-.047.129-.092.194-.137.074-.051.15-.101.225-.15.066-.044.133-.086.2-.128.077-.047.155-.093.232-.138.069-.04.137-.08.206-.117.08-.044.159-.085.239-.127.07-.036.14-.072.211-.106.081-.04.163-.077.245-.115.072-.032.143-.065.215-.096.084-.035.168-.069.253-.102.072-.029.144-.058.217-.085.086-.031.173-.06.26-.09.073-.025.146-.05.22-.073.088-.028.177-.053.266-.078.074-.02.147-.043.22-.062.092-.023.184-.044.276-.065.073-.017.145-.035.218-.05l.184-.034c-.98.956-1.777 2.658-2.268 4.817-1.12-.483-2.165-1.167-3.052-2.004l.07-.072zm9.342-2.656c.09.02.18.04.27.064.076.02.15.042.225.063l.263.076c.075.024.15.05.224.075.085.03.17.058.254.089.075.027.15.057.224.087.082.032.165.065.246.1.074.031.148.065.221.098.08.037.16.073.24.112.072.035.144.072.217.11.077.04.155.08.231.122.072.04.143.08.214.122.075.043.15.087.224.133.07.043.14.088.208.133.073.047.145.095.217.144.068.047.135.094.202.143.07.05.14.103.209.155.066.05.131.102.196.154.068.054.134.11.2.166l.19.163.192.177c.06.057.121.114.18.173l.068.069c-.896.848-1.92 1.52-3.052 2.004-.491-2.159-1.288-3.861-2.267-4.816.06.011.12.02.18.033.075.015.15.034.224.05zm2.396 9.495c-.018-1.461-.156-2.84-.394-4.088 1.254-.52 2.386-1.253 3.372-2.186 1.52 1.753 2.386 3.956 2.462 6.274h-5.44zM14.6 15.18c-1.156-.396-2.365-.598-3.601-.598-1.234 0-2.443.202-3.6.599-.218-1.183-.348-2.483-.367-3.841h7.936c-.019 1.358-.149 2.657-.368 3.84zm-.135.671c-.687 3.097-1.998 5.243-3.464 5.243H11c-1.467 0-2.777-2.145-3.465-5.242 1.112-.392 2.275-.593 3.464-.593 1.19 0 2.354.2 3.466.592zm-7.433-5.189c.019-1.358.149-2.657.367-3.84 1.157.396 2.365.599 3.6.599 1.236 0 2.445-.203 3.601-.6.22 1.184.35 2.483.368 3.841H7.032zm.503-4.51C8.222 3.053 9.532.908 10.998.906h.005c1.466.003 2.775 2.148 3.462 5.243-1.111.391-2.275.592-3.466.592-1.19 0-2.353-.2-3.464-.592zm-.787.421c-.237 1.249-.375 2.628-.394 4.09H.914c.077-2.319.943-4.523 2.463-6.275.977.921 2.13 1.67 3.371 2.185zm-.394 4.767c.02 1.461.157 2.84.395 4.089-1.25.516-2.381 1.25-3.372 2.185C1.857 15.861.992 13.657.915 11.34h5.44zm8.897 4.088c.237-1.248.376-2.627.394-4.088h5.44c-.077 2.318-.942 4.522-2.462 6.274-.986-.933-2.118-1.667-3.372-2.186z"/>
+</svg>
+                            &nbsp;&nbsp; <a href="#" class="language-select col-header"
+                                id="cta-footernavigation-linkto-languageselect-en">English</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-10 legal-list-col">
+                        <div class="legal-list">
+                                                        <div class="legal-link ">
+                                <a class="legal" href="/legal" id="cta-en-us-footernavigation-legal-_legal-click">Legal</a>
+                            </div>
+                                                        <div class="legal-link ">
+                                <a class="legal" href="/legal/privacy-policy" id="cta-en-us-footernavigation-legal-_legal_privacy_policy-click">Privacy</a>
+                            </div>
+                                                        <div class="legal-link ">
+                                <a class="legal" href="/accessibility" id="cta-en-us-footernavigation-legal-_accessibility-click">Accessibility</a>
+                            </div>
+                                                        <div class="legal-link ">
+                                <a class="legal" href="/secure" id="cta-en-us-footernavigation-legal-_secure-click">Vulnerability Disclosure</a>
+                            </div>
+                                                        <div class="legal-link legal-last">
+                                <a class="legal" href="/tos" id="cta-en-us-footernavigation-legal-_tos-click">Terms of Service</a>
+                            </div>
+                                                    </div>
+                        <br class="hidden-md hidden-lg">
+                        <p class="p-year">&copy; 2022 All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- language select overlay -->
+    <section id="overlay-lang" class="text-center text-white" style="overflow-y: scroll;">
+        <div class="container">
+            <div class="row center-row">
+                <div class="col-md-10">
+                    <p class="h2">Select your language</p>
+                </div>
+            </div>
+            <div class="row center-row">
+                <div class="col-md-5">
+                    <div class="text-center">
+                        <ul class="list-unstyled" id="intl-sites">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <script>
+var intlSitesJsonPath = "/js/intl-sites.json";
+    </script>
+    <script src="/__bundle.js?f=L2pzL3VzZXItZXhwZXJpZW5jZS9hbmltYXRpb24vYW5pbWF0ZS1vbi1zY3JvbGwubWluLmpzLC9qcy91c2VyLWV4cGVyaWVuY2Uvc2Nyb2xsLm1pbi5qcywvanMvdXNlci1leHBlcmllbmNlL25hdmlnYXRpb24ubWluLmpzfDUzRUNFM0MzNERCRkMzNzA4MDREQzRFQjdBQkU4NDk5"></script>
+
+<script defer src="/js/footer.min.js"></script>
+<script  src="/js/utilities.js"></script>
+<script  src="/js/pages/masterpage.min.js"></script>
+
+<!--adding custom js-->
+
+    
+<!-- Page Bottom JS Starts -->
+<!-- Get Template JS -->
+<script defer src="/js/library/crownpeak/searchg2.min.js"></script>
+<script src="/js/user-experience/carousel/slick.min.js"></script>
+<script src="/js/global_blog.min.js"></script>
+<!-- Page Bottom JS Ends -->
+
+
+  </body>
+</html>
